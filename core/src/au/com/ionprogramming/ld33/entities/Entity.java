@@ -10,8 +10,7 @@ import com.badlogic.gdx.physics.box2d.*;
 
 public abstract class Entity {
 
-
-    protected Vector2 loc;
+	protected Vector2 loc;
 	protected Vector2 size;
     protected Body body;
 	protected Texture tex;
@@ -60,5 +59,37 @@ public abstract class Entity {
 
 		batch.draw(tex, body.getPosition().x - size.x/2, body.getPosition().y - size.y/2, size.x, size.y, 0, 0, 16, 16, false, false);
 
+	}
+
+	public Vector2 getLoc() {
+		return loc;
+	}
+
+	public void setLoc(Vector2 loc) {
+		this.loc = loc;
+	}
+
+	public Vector2 getSize() {
+		return size;
+	}
+
+	public void setSize(Vector2 size) {
+		this.size = size;
+	}
+
+	public Body getBody() {
+		return body;
+	}
+
+	public void setBody(Body body) {
+		this.body = body;
+	}
+
+	public Texture getTex() {
+		return tex;
+	}
+
+	public void setTex(Texture tex) {
+		this.tex = tex;
 	}
 }
