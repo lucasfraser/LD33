@@ -16,7 +16,7 @@ public class LD33Game extends ApplicationAdapter {
 	private Renderer renderer;
 	private Lighting lighting;
 
-	public static boolean INTRO = true;
+	public static boolean INTRO = false;
 	public static boolean TITLE_SCREEN = false;
 
 	private SpriteBatch batch;

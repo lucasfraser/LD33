@@ -29,7 +29,7 @@ public class Player extends Entity{
             body.applyLinearImpulse(0.1f, 0, body.getPosition().x, body.getPosition().y, true);
         }
         if(Gdx.input.isKeyPressed(Input.Keys.SPACE)){
-            body.applyLinearImpulse(0, 0.1f, body.getPosition().x, body.getPosition().y, true);
+            body.applyLinearImpulse(0, 0.2f, body.getPosition().x, body.getPosition().y, true);
         }
 
     }

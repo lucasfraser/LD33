@@ -2,6 +2,7 @@ package au.com.ionprogramming.ld33.gfx;
 
 
 import au.com.ionprogramming.ld33.logic.Physics;
+import box2dLight.DirectionalLight;
 import box2dLight.PointLight;
 import box2dLight.RayHandler;
 import com.badlogic.gdx.graphics.Color;
@@ -24,7 +25,9 @@ public class Lighting {
 
         rayHandler = new RayHandler(phys.getWorld());
 
-//        rayHandler.setAmbientLight(new Color(0.3f, 0.3f, 0.3f, 0.3f));
+        rayHandler.setAmbientLight(new Color(0.3f, 0.3f, 0.3f, 0.3f));
+
+
 //
 //        addPointLight(10, 10, 30, new Color(1,0,0,1), true, phys.getWorld());
 //
@@ -33,12 +36,16 @@ public class Lighting {
 //        addPointLight(20, 15, 30, new Color(0,0,1,1), true, phys.getWorld());
 //
 //        addPointLight(2, 45, 30, new Color(61, 0, 142, 255), true, phys.getWorld());
+         new DirectionalLight(rayHandler, 512, new Color(0.4f, 0.2f, 0.2f, 0.5f), 300);
 
         rayHandler.setShadows(false);
 
     }
 
     public void render(OrthographicCamera cam){
+
+
+
         rayHandler.setCombinedMatrix(cam.combined);
         rayHandler.updateAndRender();
     }
