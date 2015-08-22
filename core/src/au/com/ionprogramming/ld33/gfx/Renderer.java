@@ -4,7 +4,9 @@ package au.com.ionprogramming.ld33.gfx;
 import au.com.ionprogramming.ld33.entities.Cube;
 import au.com.ionprogramming.ld33.entities.Entity;
 import au.com.ionprogramming.ld33.entities.Grass;
+import au.com.ionprogramming.ld33.entities.Player;
 import au.com.ionprogramming.ld33.logic.Physics;
+import au.com.ionprogramming.ld33.map.Map;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
@@ -52,8 +54,17 @@ public class Renderer {
 //
 //        cubes.add(new Cube(false, 1, 1, 48, 5, physics.getWorld(), new Color(0, 1, 0, 1), lighting));
 
-        entities.add(new Grass(0, 0, physics.getWorld(), lighting));
 
+        Map.loadMap(20, 8, new int[]{-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
+                -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,4,1,5,-1,-1,
+                -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,4,5,-1,-1,3,8,6,-1,-1,
+                -1,-1,-1,1,1,-1,-1,-1,1,1,-1,3,6,-1,-1,-1,-1,-1,-1,-1,
+                -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,3,6,-1,-1,-1,-1,-1,-1,-1,
+                -1,4,1,5,-1,4,1,1,5,-1,0,3,6,-1,-1,-1,-1,-1,-1,-1,
+                0,3,8,6,-1,-1,-1,-1,-1,-1,-1,3,6,-1,-1,-1,-1,-1,-1,-1,
+                1,2,8,7,1,1,1,1,1,1,1,2,7,1,1,1,1,1,1,1}, entities, physics, lighting);
+
+        entities.add(new Player(0, 2, 1, 1, physics.getWorld(), Images.grass1, lighting));
 
 
     }

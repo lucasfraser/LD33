@@ -12,7 +12,7 @@ public class Grass extends Entity {
 
     private Color color;
 
-    public Grass(float x, float y, World world, Lighting lighting){
-        super(false, x, y, 1, 1, world, lighting, true, Images.grass);
+    public Grass(float x, float y, World world, Lighting lighting, int pos){
+        super(false, x, y, 1, 1, world, lighting, true, Images.grass[pos]);
     }
 }

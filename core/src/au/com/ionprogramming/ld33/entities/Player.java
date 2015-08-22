@@ -17,19 +17,19 @@ public class Player extends Entity{
     Texture t;
 
     public Player(float x, float y, float width, float height, World world, Texture t, Lighting lighting){
-        super(true, x, y, width, height, world, lighting, true, Images.grass);
+        super(true, x, y, width, height, world, lighting, true, Images.grass[1]);
         this.t = t;
     }
 
     private void update(){
         if(Gdx.input.isKeyPressed(Input.Keys.A)){
-            body.applyLinearImpulse(-50, 0, body.getPosition().x, body.getPosition().y, true);
+            body.applyLinearImpulse(-0.1f, 0, body.getPosition().x, body.getPosition().y, true);
         }
         if(Gdx.input.isKeyPressed(Input.Keys.D)){
-            body.applyLinearImpulse(50, 0, body.getPosition().x, body.getPosition().y, true);
+            body.applyLinearImpulse(0.1f, 0, body.getPosition().x, body.getPosition().y, true);
         }
         if(Gdx.input.isKeyPressed(Input.Keys.SPACE)){
-            body.applyLinearImpulse(0, 50, body.getPosition().x, body.getPosition().y, true);
+            body.applyLinearImpulse(0, 0.1f, body.getPosition().x, body.getPosition().y, true);
         }
 
     }
