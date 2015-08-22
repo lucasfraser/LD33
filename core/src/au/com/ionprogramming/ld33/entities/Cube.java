@@ -15,7 +15,7 @@ public class Cube extends Entity {
     private Color color;
 
     public Cube(boolean moving, float x, float y, float width, float height, World world, Color col, Lighting lighting){
-        super(moving, x, y, width, height, world, lighting, false, Images.grass[1]);
+        super(moving, x, y, width, height, world, lighting, false, Images.grass[1], false);
         color = col;
     }
 

@@ -48,6 +48,11 @@ public class LD33Game extends ApplicationAdapter {
 
 		}
 		else{
+//			batch.begin();
+//				batch.draw(Images.stars,0,0);
+//				batch.draw(Images.trees, 0, 0);
+//			batch.end();
+
 			renderer.render();
 			physics.render(renderer.getCam());
 			lighting.render(renderer.getCam());

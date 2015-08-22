@@ -18,8 +18,16 @@ public class Images {
     public static Texture grass7;
     public static Texture grass8;
 
+    public static Texture trees;
+    public static Texture stars;
 
+    public static Texture[] monster;
 
+    public static Texture monster0;
+    public static Texture monster1;
+    public static Texture monster2;
+    public static Texture monster3;
+    
     public static void loadImages(){
 
         IPL = new Texture("IonProgrammingLogo640.png");
@@ -38,6 +46,15 @@ public class Images {
         grass = new Texture[]{grass0, grass1, grass2, grass3, grass4, grass5, grass6, grass7, grass8};
 
 
+        trees = new Texture("background.png");
 
+        stars = new Texture("backgroundStars.png");
+
+        monster0 = new Texture("monster/0.png");
+        monster1 = new Texture("monster/1.png");
+        monster2 = new Texture("monster/2.png");
+        monster3 = new Texture("monster/3.png");
+
+        monster = new Texture[]{monster0, monster1, monster2, monster3};
     }
 }

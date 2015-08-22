@@ -35,6 +35,7 @@ public class Renderer {
     private OrthographicCamera cam;
 
     private SpriteBatch batch;
+    private SpriteBatch bg;
     private ShapeRenderer shapeRenderer;
 
     public Renderer(Physics physics, Lighting lighting){
@@ -46,6 +47,7 @@ public class Renderer {
         cam.update();
 
         batch = new SpriteBatch();
+        bg = new SpriteBatch();
         shapeRenderer = new ShapeRenderer();
 
 
@@ -58,12 +60,16 @@ public class Renderer {
                 0, 3, 8, 6, -1, -1, -1, -1, -1, -1, -1, 3, 6, -1, -1, -1, -1, -1, -1, -1,
                 1, 2, 8, 7, 1, 1, 1, 1, 1, 1, 1, 2, 7, 1, 1, 1, 1, 1, 1, 1}, entities, physics, lighting);
 
-        entities.add(new Player(0, 2, 1, 1, physics.getWorld(), Images.grass1, lighting));
+        entities.add(new Player(0, 2, 1, 2, physics.getWorld(), Images.monster, lighting));
 
 
     }
 
     public void render(){
+
+
+
+
 
         setCamPos(entities.get(entities.size() - 1));
         cam.update();
@@ -79,6 +85,15 @@ public class Renderer {
                 cubes.get(i).render(shapeRenderer, batch);
             }
         shapeRenderer.end();
+
+        bg.setProjectionMatrix(cam.combined);
+
+        bg.begin();
+            for( int x = 0; x < 10; x++) {
+                bg.draw(Images.stars, x*8, 0, 8, 8);
+                bg.draw(Images.trees, x*8, 0, 8, 8);
+            }
+        bg.end();
 
         batch.begin();
             for(int i = 0; i < entities.size(); i++){

@@ -15,7 +15,7 @@ public abstract class Entity {
     protected Body body;
 	protected Texture tex;
 
-    public Entity(boolean moving, float x, float y, float width, float height, World world, Lighting lighting, boolean lockRotation, Texture texture){
+    public Entity(boolean moving, float x, float y, float width, float height, World world, Lighting lighting, boolean lockRotation, Texture texture, boolean rounded){
 
 		tex = texture;
 
@@ -24,7 +24,12 @@ public abstract class Entity {
 		size = new Vector2(width, height);
 
 		PolygonShape shape = new PolygonShape();
-		shape.setAsBox(size.x / 2, size.y/ 2);
+		shape.setAsBox(size.x / 2, size.y / 2);
+		PolygonShape round = null;
+		if(rounded) {
+			round = new PolygonShape();
+			round.set(new float[]{0 - size.x/2, size.y / 6- size.y/2,   0 - size.x/2, size.y- size.y/2,    size.x - size.x/2, size.y- size.y/2,    size.x - size.x/2, size.y/6- size.y/2,     ((size.x / 3) * 2) - size.x/2, 0- size.y/2,      (size.x / 3) - size.x/2, 0- size.y/2     });
+		}
 
 		BodyDef bodyDef = new BodyDef();
 
@@ -35,7 +40,12 @@ public abstract class Entity {
 		    bodyDef.type = BodyDef.BodyType.DynamicBody;
 
 			FixtureDef fixtureDef = new FixtureDef();
-			fixtureDef.shape = shape;
+			if(rounded){
+				fixtureDef.shape = round;
+			}
+			else {
+				fixtureDef.shape = shape;
+			}
 			fixtureDef.density = 0.5f;
 			fixtureDef.friction = 0.4f;
 			fixtureDef.restitution = 0.6f;
