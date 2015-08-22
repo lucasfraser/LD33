@@ -66,7 +66,6 @@ public abstract class Entity {
     }
 
 	public void render(ShapeRenderer r, SpriteBatch batch){
-
 		batch.draw(tex, body.getPosition().x - size.x/2, body.getPosition().y - size.y/2, size.x, size.y, 0, 0, 16, 16, false, false);
 
 	}

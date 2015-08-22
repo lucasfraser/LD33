@@ -35,8 +35,11 @@ public class Renderer {
     private OrthographicCamera cam;
 
     private SpriteBatch batch;
+    private SpriteBatch fontBatch;
     private SpriteBatch bg;
     private ShapeRenderer shapeRenderer;
+
+    private SpeechBubble testBubble;                    //test
 
     public Renderer(Physics physics, Lighting lighting){
 
@@ -47,9 +50,11 @@ public class Renderer {
         cam.update();
 
         batch = new SpriteBatch();
+        fontBatch = new SpriteBatch();
         bg = new SpriteBatch();
         shapeRenderer = new ShapeRenderer();
 
+        testBubble = new SpeechBubble("Hello! Lucas is a bloody DICK NOSE!", 0.8f, 2.5f, 2f, 1f);           //test
 
         Map.loadMap(20, 8, new int[]{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
                 -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 4, 1, 5, -1, -1,
@@ -80,18 +85,12 @@ public class Renderer {
         shapeRenderer.setProjectionMatrix(cam.combined);
         batch.setProjectionMatrix(cam.combined);
 
-        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-            for(int i = 0; i < cubes.size(); i++){
-                cubes.get(i).render(shapeRenderer, batch);
-            }
-        shapeRenderer.end();
-
         bg.setProjectionMatrix(cam.combined);
 
         bg.begin();
             for( int x = 0; x < 10; x++) {
                 bg.draw(Images.stars, x*8, 0, 8, 8);
-                bg.draw(Images.trees, x*8, 0, 8, 8);
+                bg.draw(Images.trees, x * 8, 0, 8, 8);
             }
         bg.end();
 
@@ -99,8 +98,8 @@ public class Renderer {
             for(int i = 0; i < entities.size(); i++){
                 entities.get(i).render(shapeRenderer, batch);
             }
-
         batch.end();
+        testBubble.render(batch, shapeRenderer);
 
         System.out.println("FPS: " + Gdx.graphics.getFramesPerSecond());
 

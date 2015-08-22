@@ -54,7 +54,7 @@ public class LD33Game extends ApplicationAdapter {
 //			batch.end();
 
 			renderer.render();
-			physics.render(renderer.getCam());
+//			physics.render(renderer.getCam());
 			lighting.render(renderer.getCam());
 			physics.doPhysicsStep(Gdx.graphics.getDeltaTime());
 		}
