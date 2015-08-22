@@ -1,23 +1,24 @@
 package au.com.ionprogramming.ld33.entities;
 
 import au.com.ionprogramming.ld33.gfx.Lighting;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 
-/**
- * Created by Lucas on 3/08/2015.
- */
 
-public class Entity {
+public abstract class Entity {
 
 
     protected Vector2 loc;
 	protected Vector2 size;
     protected Body body;
+	protected Texture tex;
 
-    public Entity(boolean moving, float x, float y, float width, float height, World world, Lighting lighting, boolean lockRotation){
+    public Entity(boolean moving, float x, float y, float width, float height, World world, Lighting lighting, boolean lockRotation, Texture texture){
+
+		tex = texture;
 
         loc = new Vector2(x, y);
 
@@ -57,7 +58,9 @@ public class Entity {
 
 	public void render(ShapeRenderer r, SpriteBatch batch){
 
+		System.out.println(body.getPosition().x +", " + body.getPosition().y);
 
+		batch.draw(tex, body.getPosition().x - size.x/2, body.getPosition().y - size.y/2, size.x, size.y, 0, 0, 16, 16, false, false);
 
 	}
 }

@@ -1,5 +1,6 @@
 package au.com.ionprogramming.ld33.entities;
 
+import au.com.ionprogramming.ld33.gfx.Images;
 import au.com.ionprogramming.ld33.gfx.Lighting;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -16,7 +17,7 @@ public class Player extends Entity{
     Texture t;
 
     public Player(float x, float y, float width, float height, World world, Texture t, Lighting lighting){
-        super(true, x, y, width, height, world, lighting, true);
+        super(true, x, y, width, height, world, lighting, true, Images.grass);
         this.t = t;
     }
 

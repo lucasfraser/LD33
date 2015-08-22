@@ -14,6 +14,9 @@ public class LD33Game extends ApplicationAdapter {
 	private Renderer renderer;
 	private Lighting lighting;
 
+	public static boolean INTRO = false;
+	public static boolean TITLE_SCREEN = false;
+
 
 	@Override
 	public void create () {
@@ -29,14 +32,18 @@ public class LD33Game extends ApplicationAdapter {
 	@Override
 	public void render () {
 
-		renderer.render();
+		if(INTRO){
 
-		physics.render(renderer.getCam());
+		}
+		else if(TITLE_SCREEN){
 
-		lighting.render(renderer.getCam());
-
-		physics.doPhysicsStep(Gdx.graphics.getDeltaTime());
-
+		}
+		else{
+			renderer.render();
+			physics.render(renderer.getCam());
+			lighting.render(renderer.getCam());
+			physics.doPhysicsStep(Gdx.graphics.getDeltaTime());
+		}
 
 	}
 

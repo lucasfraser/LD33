@@ -1,13 +1,14 @@
 package au.com.ionprogramming.ld33.gfx;
 
-/**
- * Created by Lucas on 3/08/2015.
- */
+
+import com.badlogic.gdx.graphics.Texture;
 
 public class Images {
 
+    public static Texture grass;
+
     public static void loadImages(){
-//        computer = new Texture("computer.png");
+        grass = new Texture("grass.png");
 //        player = new Texture("Game-Character-2.png");
     }
 }

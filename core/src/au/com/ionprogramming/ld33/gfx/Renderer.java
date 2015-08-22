@@ -3,7 +3,7 @@ package au.com.ionprogramming.ld33.gfx;
 
 import au.com.ionprogramming.ld33.entities.Cube;
 import au.com.ionprogramming.ld33.entities.Entity;
-import au.com.ionprogramming.ld33.entities.Player;
+import au.com.ionprogramming.ld33.entities.Grass;
 import au.com.ionprogramming.ld33.logic.Physics;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -23,8 +23,8 @@ public class Renderer {
     public static ArrayList<Entity> cubes = new ArrayList<Entity>();
     public static ArrayList<Entity> entities = new ArrayList<Entity>();
 
-    private float camWidth = 50;
-    private float camHeight = 50;
+    private float camWidth = 8;
+    private float camHeight = 8;
 
     private OrthographicCamera cam;
 
@@ -41,16 +41,18 @@ public class Renderer {
 
         batch = new SpriteBatch();
         shapeRenderer = new ShapeRenderer();
+//
+//        cubes.add(new Cube(true, 40, 20, 4, 4, physics.getWorld(), new Color(1, 0, 0, 1), lighting));
+//        cubes.add(new Cube(true, 37, 26, 4, 4, physics.getWorld(), new Color(1, 0, 0, 1), lighting));
+//        cubes.add(new Cube(true, 33, 32, 4, 4, physics.getWorld(), new Color(1, 0, 0, 1), lighting));
+//        cubes.add(new Cube(true, 29, 38, 4, 4, physics.getWorld(), new Color(1, 0, 0, 1), lighting));
+//        cubes.add(new Cube(true, 25, 45, 4, 4, physics.getWorld(), new Color(1, 0, 0, 1), lighting));
+//        cubes.add(new Cube(true, 21, 50, 4, 4, physics.getWorld(), new Color(1, 0, 0, 1), lighting));
+//
+//
+//        cubes.add(new Cube(false, 1, 1, 48, 5, physics.getWorld(), new Color(0, 1, 0, 1), lighting));
 
-        cubes.add(new Cube(true, 40, 20, 4, 4, physics.getWorld(), new Color(1, 0, 0, 1), lighting));
-        cubes.add(new Cube(true, 37, 26, 4, 4, physics.getWorld(), new Color(1, 0, 0, 1), lighting));
-        cubes.add(new Cube(true, 33, 32, 4, 4, physics.getWorld(), new Color(1, 0, 0, 1), lighting));
-        cubes.add(new Cube(true, 29, 38, 4, 4, physics.getWorld(), new Color(1, 0, 0, 1), lighting));
-        cubes.add(new Cube(true, 25, 45, 4, 4, physics.getWorld(), new Color(1, 0, 0, 1), lighting));
-        cubes.add(new Cube(true, 21, 50, 4, 4, physics.getWorld(), new Color(1, 0, 0, 1), lighting));
-
-
-        cubes.add(new Cube(false, 1, 1, 48, 5, physics.getWorld(), new Color(0, 1, 0, 1), lighting));
+        entities.add(new Grass(0, 0, physics.getWorld(), lighting));
 
 
 

@@ -1,5 +1,6 @@
 package au.com.ionprogramming.ld33.entities;
 
+import au.com.ionprogramming.ld33.gfx.Images;
 import au.com.ionprogramming.ld33.gfx.Lighting;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -14,7 +15,7 @@ public class Cube extends Entity {
     private Color color;
 
     public Cube(boolean moving, float x, float y, float width, float height, World world, Color col, Lighting lighting){
-        super(moving, x, y, width, height, world, lighting, false);
+        super(moving, x, y, width, height, world, lighting, false, Images.grass);
         color = col;
     }
 
