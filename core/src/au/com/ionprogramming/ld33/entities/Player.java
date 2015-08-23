@@ -3,8 +3,10 @@ package au.com.ionprogramming.ld33.entities;
 import au.com.ionprogramming.ld33.gfx.Images;
 import au.com.ionprogramming.ld33.gfx.Lighting;
 import au.com.ionprogramming.ld33.gfx.Renderer;
+import box2dLight.PointLight;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -19,10 +21,13 @@ public class Player extends Entity{
     Texture t;
 
     boolean flip;
+    private PointLight p;
 
     public Player(float x, float y, World world, Texture[] t, Lighting lighting){
         super(true, x, y, 0.9f, 1.8f, world, lighting, true, t[0], true);
         this.t = t[0];
+        p = new PointLight(lighting.getRayHandler(), 256, new Color(1, 1, 1, 0.5f), 2f, x, y);
+        p.attachToBody(body);
     }
 
     @Override

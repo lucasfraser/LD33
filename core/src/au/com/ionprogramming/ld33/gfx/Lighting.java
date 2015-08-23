@@ -25,6 +25,12 @@ public class Lighting {
 
     private RayHandler rayHandler;
 
+    public DirectionalLight getD() {
+        return d;
+    }
+
+    private DirectionalLight d;
+
     public Lighting(Physics phys){
 
         rayHandler = new RayHandler(phys.getWorld());
@@ -40,7 +46,8 @@ public class Lighting {
 //        addPointLight(20, 15, 30, new Color(0,0,1,1), true, phys.getWorld());
 //
 //        addPointLight(2, 45, 30, new Color(61, 0, 142, 255), true, phys.getWorld());
-         new DirectionalLight(rayHandler, 512, new Color(0.4f, 0.2f, 0.2f, 0.5f), 300);
+         d = new DirectionalLight(rayHandler, 512, new Color(0.4f, 0.2f, 0.2f, 0.5f), 300);
+
 
         rayHandler.setShadows(false);
 
