@@ -27,36 +27,32 @@ public class SpeechBubble {
     protected Color textCol;
     protected Color boxCol;
 
-    public SpeechBubble(String text, float x, float y, float width){
-        textCol = Color.GOLD;
-        boxCol = new Color(1f, 1f, 1f, 0.3f);
+    public SpeechBubble(String text, float width){
+        textCol = Color.WHITE;
+        boxCol = new Color(0f, 0f, 0f, 0.5f);
         font = new BitmapFont();
         glyph = new GlyphLayout();
         font.setUseIntegerPositions(false);
         font.getData().setScale(0.02f, 0.02f);
         this.text = text;
-        this.x = x;
-        this.y = y;
         this.width = width;
         glyph.setText(font, text, 0, text.length() - 1, Color.FOREST, width, Align.left, true, null);
         fullHeight = glyph.height;
     }
 
-    public SpeechBubble(String text, float x, float y, float width, Color textCol, Color boxCol){
+    public SpeechBubble(String text, float width, Color textCol, Color boxCol){
         this.textCol = textCol;
         this.boxCol = boxCol;
         font = new BitmapFont();
         glyph = new GlyphLayout();
         font.setUseIntegerPositions(false);
         this.text = text;
-        this.x = x;
-        this.y = y;
         this.width = width;
         glyph.setText(font, text, 0, text.length() - 1, textCol, width, Align.left, true, null);
         fullHeight = glyph.height;
     }
 
-    public void render(SpriteBatch batch, ShapeRenderer r){
+    public void render(SpriteBatch batch, ShapeRenderer r, float x, float y){
         glyph.setText(font, text, 0, (int) progress, textCol, width, Align.left, true, null);
         height = glyph.height;
         if(progress < text.length()) {
@@ -67,12 +63,14 @@ public class SpeechBubble {
         Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
         r.begin(ShapeRenderer.ShapeType.Filled);
             r.setColor(boxCol);
-            r.rect(x - border, y - border + fullHeight - height, width + border*2, height + border*2);
+            r.rect(x - border, y + fullHeight - height, width + border * 2, height);
+            r.rect(x, y - border + fullHeight - height, width, border);
+            r.rect(x, y + fullHeight, width, border);
+            r.arc(x, y + fullHeight, border, 90, 90);
+            r.arc(x, y + fullHeight - height, border, 180, 90);
+            r.arc(x + width, y + fullHeight, border, 0, 90);
+            r.arc(x + width, y + fullHeight - height, border, 270, 90);
         r.end();
-//        r.begin(ShapeRenderer.ShapeType.Line);
-//            r.setColor(1f, 1f, 1f, 0.5f);
-//            r.rect(x - border, y - border + fullHeight - height, width + border*2, height + border*2);
-//        r.end();
         Gdx.gl.glDisable(GL20.GL_BLEND);
 
         batch.begin();

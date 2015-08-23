@@ -1,19 +1,15 @@
 package au.com.ionprogramming.ld33.gfx;
 
-
-import au.com.ionprogramming.ld33.entities.Cube;
 import au.com.ionprogramming.ld33.entities.Entity;
-import au.com.ionprogramming.ld33.entities.Grass;
+import au.com.ionprogramming.ld33.entities.Firefly;
 import au.com.ionprogramming.ld33.entities.Player;
 import au.com.ionprogramming.ld33.logic.Physics;
 import au.com.ionprogramming.ld33.map.Map;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.math.MathUtils;
 
 import java.util.ArrayList;
 
@@ -22,8 +18,6 @@ import java.util.ArrayList;
  */
 public class Renderer {
 
-
-    public static ArrayList<Entity> cubes = new ArrayList<Entity>();
     public static ArrayList<Entity> entities = new ArrayList<Entity>();
 
     private float camWidth = 8;
@@ -35,11 +29,11 @@ public class Renderer {
     private OrthographicCamera cam;
 
     private SpriteBatch batch;
-    private SpriteBatch fontBatch;
     private SpriteBatch bg;
     private ShapeRenderer shapeRenderer;
 
     private SpeechBubble testBubble;                    //test
+    private Firefly fly;
 
     public Renderer(Physics physics, Lighting lighting){
 
@@ -50,11 +44,8 @@ public class Renderer {
         cam.update();
 
         batch = new SpriteBatch();
-        fontBatch = new SpriteBatch();
         bg = new SpriteBatch();
         shapeRenderer = new ShapeRenderer();
-
-        testBubble = new SpeechBubble("Hello! Lucas is a bloody \nDICK NOSE!", 1f, 1f, 2f);           //test
 
         Map.loadMap(20, 8, new int[]{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
                 -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 4, 1, 5, -1, -1,
@@ -65,17 +56,15 @@ public class Renderer {
                 0, 3, 8, 6, -1, -1, -1, -1, -1, -1, -1, 3, 6, -1, -1, -1, -1, -1, -1, -1,
                 1, 2, 8, 7, 1, 1, 1, 1, 1, 1, 1, 2, 7, 1, 1, 1, 1, 1, 1, 1}, entities, physics, lighting);
 
+        fly = new Firefly(4, 3.5f, physics.getWorld(), lighting);
+        entities.add(fly);
         entities.add(new Player(0, 2, 1, 2, physics.getWorld(), Images.monster, lighting));
 
-
+        testBubble = new SpeechBubble("Hello! Lucas is a bloody \nDICK NOSE!", 2f);           //test
+        entities.get(entities.size() - 1).setSpeechBubble(testBubble);
     }
 
     public void render(){
-
-
-
-
-
         setCamPos(entities.get(entities.size() - 1));
         cam.update();
 
@@ -99,7 +88,10 @@ public class Renderer {
                 entities.get(i).render(shapeRenderer, batch);
             }
         batch.end();
-        testBubble.render(batch, shapeRenderer);
+        for(int i = 0; i < entities.size(); i++){
+            entities.get(i).renderSpeechBubble(shapeRenderer, batch);
+        }
+        fly.update();
 
         System.out.println("FPS: " + Gdx.graphics.getFramesPerSecond());
 
