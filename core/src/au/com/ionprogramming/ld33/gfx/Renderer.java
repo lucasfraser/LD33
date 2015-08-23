@@ -42,8 +42,6 @@ public class Renderer {
     private SpriteBatch bg;
     private ShapeRenderer shapeRenderer;
 
-    private SpeechBubble testBubble;
-
     public Renderer(Physics physics, Lighting lighting){
 
         float w = Gdx.graphics.getWidth();
@@ -71,9 +69,11 @@ public class Renderer {
         entities.add(new Firefly(8, 5f, physics.getWorld(), lighting));
         entities.add(new Player(0, 2, physics.getWorld(), Images.monster, lighting));
 
-        testBubble = new SpeechBubble("Do you know the Muffin Man?", 2f);           //test
-        entities.get(entities.size() - 1).setSpeechBubble(testBubble);
+        entities.get(entities.size() - 1).setSpeechBubble(new SpeechBubble("Do you know the Muffin Man?", 2f));
         entities.get(entities.size() - 1).setSpeechActive(true);
+
+        entities.get(entities.size() - 2).setSpeechBubble(new SpeechBubble("Indeedy I do, good sir ghost!", 2f));
+        entities.get(entities.size() - 2).setSpeechActive(true);
     }
 
     public void render(){
