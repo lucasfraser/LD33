@@ -31,17 +31,14 @@ public class Images {
 
     public static Texture firefly;
     public static Texture balloon;
-    public static Texture bush1;
-    public static Texture bush2;
+    public static Texture[] bush;
     public static Texture carrot;
     public static Texture hedgehog;
     public static Texture lakeLeft;
     public static Texture lakeRight;
     public static Texture log;
     public static Texture lolly;
-    public static Texture plant1;
-    public static Texture plant2;
-    public static Texture plant3;
+    public static Texture[] plant;
     public static Texture rabbitBig;
     public static Texture rabbitSmall;
     
@@ -66,6 +63,13 @@ public class Images {
                 new Texture("images/tree4.png"),
                 new Texture("images/tree5.png"),
                 new Texture("images/tree6.png")};
+        bush = new Texture[]{
+                new Texture("images/bush1.png"),
+                new Texture("images/bush2.png")};
+        plant = new Texture[]{
+                new Texture("images/plant1.png"),
+                new Texture("images/plant2.png"),
+                new Texture("images/plant3.png")};
 
         grass = new Texture[]{grass0, grass1, grass2, grass3, grass4, grass5, grass6, grass7, grass8};
 
@@ -79,17 +83,12 @@ public class Images {
 
         firefly = new Texture("firefly.png");
         balloon = new Texture("images/balloon.png");
-        bush1 = new Texture("images/bush1.png");
-        bush2 = new Texture("images/bush2.png");
         carrot = new Texture("images/carrot.png");
         hedgehog = new Texture("images/hedgehog.png");
         lakeLeft = new Texture("images/lakeLeft.png");
         lakeRight = new Texture("images/lakeRight.png");
         log = new Texture("images/log.png");
         lolly = new Texture("images/lolly.png");
-        plant1 = new Texture("images/plant1.png");
-        plant2 = new Texture("images/plant2.png");
-        plant3 = new Texture("images/plant3.png");
         rabbitBig = new Texture("images/rabbitBig.png");
         rabbitSmall = new Texture("images/rabbitSmall.png");
 

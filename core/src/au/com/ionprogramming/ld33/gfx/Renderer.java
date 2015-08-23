@@ -68,6 +68,7 @@ public class Renderer {
         entities.add(new Firefly(6, 5f, physics.getWorld(), lighting));
         entities.add(new Firefly(8, 5f, physics.getWorld(), lighting));
         entities.add(new Hedgehog(3, 5f, physics.getWorld(), lighting));
+        entities.add(new Balloon(6, 4, physics.getWorld(), lighting));
         player = new Player(0, 2, physics.getWorld(), Images.monster, lighting);
         entities.add(player);
 
