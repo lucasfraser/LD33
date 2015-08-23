@@ -64,7 +64,6 @@ public class Player extends Entity{
 
 
         batch.draw(Images.monster[sprite], body.getPosition().x - size.x/2, body.getPosition().y - size.y/2, size.x, size.y, 0, 0, Images.monster[sprite].getWidth(), Images.monster[sprite].getHeight(), flip, false);
-
     }
 
 }

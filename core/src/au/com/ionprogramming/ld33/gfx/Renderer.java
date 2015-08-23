@@ -2,6 +2,7 @@ package au.com.ionprogramming.ld33.gfx;
 
 
 import au.com.ionprogramming.ld33.entities.Entity;
+import au.com.ionprogramming.ld33.entities.Firefly;
 import au.com.ionprogramming.ld33.entities.Player;
 import au.com.ionprogramming.ld33.logic.Physics;
 import au.com.ionprogramming.ld33.map.Map;
@@ -40,11 +41,11 @@ public class Renderer {
     private OrthographicCamera cam;
 
     private SpriteBatch batch;
-    private SpriteBatch fontBatch;
     private SpriteBatch bg;
     private ShapeRenderer shapeRenderer;
 
     private SpeechBubble testBubble;                    //test
+    private Firefly fly;
 
     public Renderer(Physics physics, Lighting lighting){
 
@@ -55,11 +56,8 @@ public class Renderer {
         cam.update();
 
         batch = new SpriteBatch();
-        fontBatch = new SpriteBatch();
         bg = new SpriteBatch();
         shapeRenderer = new ShapeRenderer();
-
-        testBubble = new SpeechBubble("Hello! Lucas is a bloody DICK NOSE!", 0.8f, 2.5f, 2f, 1f);           //test
 
         Map.loadMap(20, 8, new int[]{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
                 -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 4, 1, 5, -1, -1,
@@ -70,9 +68,12 @@ public class Renderer {
                 0, 3, 8, 6, -1, -1, -1, -1, -1, -1, -1, 3, 6, -1, -1, -1, -1, -1, -1, -1,
                 1, 2, 8, 7, 1, 1, 1, 1, 1, 1, 1, 2, 7, 1, 1, 1, 1, 1, 1, 1}, entities, physics, lighting);
 
+        fly = new Firefly(4, 3.5f, physics.getWorld(), lighting);
+        entities.add(fly);
         entities.add(new Player(0, 2, 1, 2, physics.getWorld(), Images.monster, lighting));
 
-
+        testBubble = new SpeechBubble("Hello! Lucas is a bloody \nDICK NOSE!", 2f);           //test
+        entities.get(entities.size() - 1).setSpeechBubble(testBubble);
     }
 
     public void render(){
@@ -118,6 +119,10 @@ public class Renderer {
             shapeRenderer.setColor(FIGHT_COLOR);
         }
         testBubble.render(batch, shapeRenderer);
+        for(int i = 0; i < entities.size(); i++){
+            entities.get(i).renderSpeechBubble(shapeRenderer, batch);
+        }
+        fly.update();
 
 
 //        System.out.println("FPS: " + Gdx.graphics.getFramesPerSecond() + ", Player: " + px + ", " + py);

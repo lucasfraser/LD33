@@ -19,6 +19,10 @@ import com.badlogic.gdx.physics.box2d.World;
 
 public class Lighting {
 
+    public RayHandler getRayHandler() {
+        return rayHandler;
+    }
+
     private RayHandler rayHandler;
 
     public Lighting(Physics phys){
@@ -73,6 +77,7 @@ public class Lighting {
         }
 
         new PointLight(rayHandler, 256, col, raduis, x, y);
+
     }
 
 

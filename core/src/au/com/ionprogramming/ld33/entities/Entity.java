@@ -1,6 +1,7 @@
 package au.com.ionprogramming.ld33.entities;
 
 import au.com.ionprogramming.ld33.gfx.Lighting;
+import au.com.ionprogramming.ld33.gfx.SpeechBubble;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
@@ -14,6 +15,9 @@ public abstract class Entity {
 	protected Vector2 size;
     protected Body body;
 	protected Texture tex;
+	protected SpeechBubble bubble;
+
+	protected boolean speechActive;
 
     public Entity(boolean moving, float x, float y, float width, float height, World world, Lighting lighting, boolean lockRotation, Texture texture, boolean rounded){
 
@@ -66,8 +70,13 @@ public abstract class Entity {
     }
 
 	public void render(ShapeRenderer r, SpriteBatch batch){
-		batch.draw(tex, body.getPosition().x - size.x/2, body.getPosition().y - size.y/2, size.x, size.y, 0, 0, 16, 16, false, false);
+		batch.draw(tex, body.getPosition().x - size.x / 2, body.getPosition().y - size.y / 2, size.x, size.y, 0, 0, 16, 16, false, false);
+	}
 
+	public void renderSpeechBubble(ShapeRenderer r, SpriteBatch batch){
+		if(bubble != null && speechActive) {
+			bubble.render(batch, r, body.getPosition().x - size.x/2, body.getPosition().y + size.y/2);
+		}
 	}
 
 	public Vector2 getLoc() {
@@ -100,5 +109,17 @@ public abstract class Entity {
 
 	public void setTex(Texture tex) {
 		this.tex = tex;
+	}
+
+	public void setSpeechBubble(SpeechBubble bubble){this.bubble = bubble;}
+
+	public SpeechBubble getSpeechBubble(){return bubble;}
+
+	public boolean isSpeechActive() {
+		return speechActive;
+	}
+
+	public void setSpeechActive(boolean speechActive) {
+		this.speechActive = speechActive;
 	}
 }

@@ -27,6 +27,8 @@ public class Images {
     public static Texture monster1;
     public static Texture monster2;
     public static Texture monster3;
+
+    public static Texture firefly;
     
     public static void loadImages(){
 
@@ -55,6 +57,8 @@ public class Images {
         monster1 = new Texture("monster/1.png");
         monster2 = new Texture("monster/2.png");
         monster3 = new Texture("monster/3.png");
+
+        firefly = new Texture("firefly.png");
 
         monster = new Texture[]{monster0, monster1, monster2, monster3};
     }
