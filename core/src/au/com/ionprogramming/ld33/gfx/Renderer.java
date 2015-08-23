@@ -1,19 +1,17 @@
 package au.com.ionprogramming.ld33.gfx;
 
 
-import au.com.ionprogramming.ld33.entities.Cube;
 import au.com.ionprogramming.ld33.entities.Entity;
-import au.com.ionprogramming.ld33.entities.Grass;
 import au.com.ionprogramming.ld33.entities.Player;
 import au.com.ionprogramming.ld33.logic.Physics;
 import au.com.ionprogramming.ld33.map.Map;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.math.MathUtils;
 
 import java.util.ArrayList;
 
@@ -22,6 +20,13 @@ import java.util.ArrayList;
  */
 public class Renderer {
 
+
+    public static float px = 0;
+    public static float py = 0;
+
+
+    public static boolean FIGHT_MODE = false;
+    public static Color FIGHT_COLOR = new Color(0.8f, 0.4f, 0.4f, 1f);
 
     public static ArrayList<Entity> cubes = new ArrayList<Entity>();
     public static ArrayList<Entity> entities = new ArrayList<Entity>();
@@ -73,6 +78,9 @@ public class Renderer {
     public void render(){
 
 
+        if(Gdx.input.isKeyPressed(Input.Keys.R)){
+            FIGHT_MODE = true;
+        }
 
 
 
@@ -85,23 +93,34 @@ public class Renderer {
         shapeRenderer.setProjectionMatrix(cam.combined);
         batch.setProjectionMatrix(cam.combined);
 
-        bg.setProjectionMatrix(cam.combined);
+//        bg.setProjectionMatrix(cam.combined);
 
         bg.begin();
-            for( int x = 0; x < 10; x++) {
-                bg.draw(Images.stars, x*8, 0, 8, 8);
-                bg.draw(Images.trees, x * 8, 0, 8, 8);
+            if(FIGHT_MODE){
+                bg.setColor(FIGHT_COLOR);
             }
+            bg.draw(Images.stars, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), px*0.01f - (float)Gdx.graphics.getWidth()/800f, py*0.01f - (float)Gdx.graphics.getHeight()/800f, px*0.01f + (float)Gdx.graphics.getWidth()/800f, py*0.01f + (float)Gdx.graphics.getHeight()/800f);
+
+//            bg.draw(Images.trees, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), px*0.01f - (float)Gdx.graphics.getWidth()/800f, py*0.01f - (float)Gdx.graphics.getHeight()/800f, px*0.01f + (float)Gdx.graphics.getWidth()/800f, py*0.01f + (float)Gdx.graphics.getHeight()/800f);
         bg.end();
 
         batch.begin();
-            for(int i = 0; i < entities.size(); i++){
+            if(FIGHT_MODE){
+                batch.setColor(FIGHT_COLOR);
+            }
+
+        for(int i = 0; i < entities.size(); i++){
                 entities.get(i).render(shapeRenderer, batch);
             }
         batch.end();
+
+        if(FIGHT_MODE){
+            shapeRenderer.setColor(FIGHT_COLOR);
+        }
         testBubble.render(batch, shapeRenderer);
 
-        System.out.println("FPS: " + Gdx.graphics.getFramesPerSecond());
+
+//        System.out.println("FPS: " + Gdx.graphics.getFramesPerSecond() + ", Player: " + px + ", " + py);
 
     }
 

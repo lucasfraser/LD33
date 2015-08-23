@@ -2,6 +2,7 @@ package au.com.ionprogramming.ld33.entities;
 
 import au.com.ionprogramming.ld33.gfx.Images;
 import au.com.ionprogramming.ld33.gfx.Lighting;
+import au.com.ionprogramming.ld33.gfx.Renderer;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
@@ -39,6 +40,8 @@ public class Player extends Entity{
             body.applyLinearImpulse(0, 8f, body.getPosition().x, body.getPosition().y, true);
         }
 
+        Renderer.px = body.getPosition().x - size.x/2;
+        Renderer.py = body.getPosition().y - size.y/2;
     }
 
     int tick = 0;

@@ -63,6 +63,13 @@ public class LD33Game extends ApplicationAdapter {
 
 	@Override
 	public void resize(int width, int height){
+		if(width < 640){
+			Gdx.graphics.setDisplayMode(640, Gdx.graphics.getHeight(), false);
+		}
+		if(height < 480){
+			Gdx.graphics.setDisplayMode(Gdx.graphics.getWidth(), 480, false);
+		}
+
 		renderer.setCamBounds(width, height);
 	}
 }

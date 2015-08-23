@@ -49,6 +49,7 @@ public class Images {
         trees = new Texture("background.png");
 
         stars = new Texture("backgroundStars.png");
+        stars.setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat);
 
         monster0 = new Texture("monster/0.png");
         monster1 = new Texture("monster/1.png");
