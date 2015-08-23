@@ -28,6 +28,20 @@ public class Images {
     public static Texture monster3;
 
     public static Texture firefly;
+    public static Texture balloon;
+    public static Texture bush1;
+    public static Texture bush2;
+    public static Texture carrot;
+    public static Texture hedgehog;
+    public static Texture lakeLeft;
+    public static Texture lakeRight;
+    public static Texture log;
+    public static Texture lolly;
+    public static Texture plant1;
+    public static Texture plant2;
+    public static Texture plant3;
+    public static Texture rabbitBig;
+    public static Texture rabbitSmall;
     
     public static void loadImages(){
 
@@ -55,6 +69,20 @@ public class Images {
         monster3 = new Texture("monster/3.png");
 
         firefly = new Texture("firefly.png");
+        balloon = new Texture("images/balloon.png");
+        bush1 = new Texture("images/bush1.png");
+        bush2 = new Texture("images/bush2.png");
+        carrot = new Texture("images/carrot.png");
+        hedgehog = new Texture("images/hedgehog.png");
+        lakeLeft = new Texture("images/lakeLeft.png");
+        lakeRight = new Texture("images/lakeRight.png");
+        log = new Texture("images/log.png");
+        lolly = new Texture("images/lolly.png");
+        plant1 = new Texture("images/plant1.png");
+        plant2 = new Texture("images/plant2.png");
+        plant3 = new Texture("images/plant3.png");
+        rabbitBig = new Texture("images/rabbitBig.png");
+        rabbitSmall = new Texture("images/rabbitSmall.png");
 
         monster = new Texture[]{monster0, monster1, monster2, monster3};
     }

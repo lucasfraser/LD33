@@ -6,6 +6,7 @@ import au.com.ionprogramming.ld33.gfx.IntroScreen;
 import au.com.ionprogramming.ld33.gfx.Lighting;
 import au.com.ionprogramming.ld33.gfx.Renderer;
 import au.com.ionprogramming.ld33.logic.Physics;
+import au.com.ionprogramming.ld33.sfx.SoundHandler;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -15,6 +16,7 @@ public class LD33Game extends ApplicationAdapter {
 	private Physics physics;
 	private Renderer renderer;
 	private Lighting lighting;
+	private SoundHandler sound;
 
 	public static boolean INTRO = false;
 	public static boolean TITLE_SCREEN = false;
@@ -30,6 +32,8 @@ public class LD33Game extends ApplicationAdapter {
 		physics = new Physics();
 		lighting = new Lighting(physics);
 		renderer = new Renderer(physics, lighting);
+		sound = new SoundHandler();
+//		sound.play("sounds/song1.mp3", true);
 
 		batch = new SpriteBatch();
 

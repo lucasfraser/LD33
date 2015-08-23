@@ -19,8 +19,6 @@ import com.badlogic.gdx.physics.box2d.World;
 public class Player extends Entity{
 
     Texture t;
-
-    boolean flip;
     private PointLight p;
 
     public Player(float x, float y, World world, Texture[] t, Lighting lighting){

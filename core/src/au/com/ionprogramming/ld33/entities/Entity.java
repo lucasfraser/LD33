@@ -16,8 +16,10 @@ public abstract class Entity {
     protected Body body;
 	protected Texture tex;
 	protected SpeechBubble bubble;
+	protected boolean flip = false;
 
 	protected boolean speechActive;
+	protected float talkDist = 2;
 
     public Entity(boolean moving, float x, float y, float width, float height, World world, Lighting lighting, boolean lockRotation, Texture texture, boolean rounded){
 
@@ -73,12 +75,15 @@ public abstract class Entity {
 	}
 
 	public void render(ShapeRenderer r, SpriteBatch batch){
-		batch.draw(tex, body.getPosition().x - size.x / 2, body.getPosition().y - size.y / 2, size.x, size.y, 0, 0, 16, 16, false, false);
+		batch.draw(tex, body.getPosition().x - size.x / 2, body.getPosition().y - size.y / 2, size.x, size.y, 0, 0, 16, 16, flip, false);
 	}
 
-	public void renderSpeechBubble(ShapeRenderer r, SpriteBatch batch){
-		if(bubble != null && speechActive) {
+	public void renderSpeechBubble(ShapeRenderer r, SpriteBatch batch, float playerX, float playerY){
+		if(bubble != null && speechActive && (Math.abs(body.getPosition().x - playerX) < talkDist && Math.abs(body.getPosition().y - playerY) < talkDist)) {
 			bubble.render(batch, r, body.getPosition().x - size.x/2, body.getPosition().y + size.y/2);
+		}
+		else if(bubble != null){
+			bubble.resetProgress();
 		}
 	}
 

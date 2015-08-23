@@ -77,4 +77,8 @@ public class SpeechBubble {
             font.draw(batch, glyph, x, y + fullHeight);
         batch.end();
     }
+
+    public void resetProgress(){
+        progress = 0;
+    }
 }

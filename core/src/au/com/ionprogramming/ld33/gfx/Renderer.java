@@ -3,6 +3,7 @@ package au.com.ionprogramming.ld33.gfx;
 import au.com.ionprogramming.ld33.entities.Entity;
 import au.com.ionprogramming.ld33.entities.Firefly;
 import au.com.ionprogramming.ld33.entities.Player;
+import au.com.ionprogramming.ld33.entities.Rabbit;
 import au.com.ionprogramming.ld33.logic.Physics;
 import au.com.ionprogramming.ld33.map.Map;
 import com.badlogic.gdx.Gdx;
@@ -42,6 +43,8 @@ public class Renderer {
     private SpriteBatch bg;
     private ShapeRenderer shapeRenderer;
 
+    private Player player;
+
     public Renderer(Physics physics, Lighting lighting){
 
         float w = Gdx.graphics.getWidth();
@@ -67,10 +70,12 @@ public class Renderer {
         entities.add(new Firefly(2, 5f, physics.getWorld(), lighting));
         entities.add(new Firefly(6, 5f, physics.getWorld(), lighting));
         entities.add(new Firefly(8, 5f, physics.getWorld(), lighting));
-        entities.add(new Player(0, 2, physics.getWorld(), Images.monster, lighting));
+        entities.add(new Rabbit(3, 5f, physics.getWorld(), lighting));
+        player = new Player(0, 2, physics.getWorld(), Images.monster, lighting);
+        entities.add(player);
 
-        entities.get(entities.size() - 1).setSpeechBubble(new SpeechBubble("Do you know the Muffin Man?", 2f));
-        entities.get(entities.size() - 1).setSpeechActive(true);
+        player.setSpeechBubble(new SpeechBubble("Do you know the Muffin Man?", 2f));
+        player.setSpeechActive(true);
 
         entities.get(entities.size() - 2).setSpeechBubble(new SpeechBubble("Indeedy I do, good sir ghost!", 2f));
         entities.get(entities.size() - 2).setSpeechActive(true);
@@ -82,7 +87,7 @@ public class Renderer {
             FIGHT_MODE = true;
         }
 
-        setCamPos(entities.get(entities.size() - 1));
+        setCamPos(player);
         cam.update();
 
         Gdx.gl.glClearColor(0.1f, 0.1f, 0.1f, 1);
@@ -98,7 +103,6 @@ public class Renderer {
                 bg.setColor(FIGHT_COLOR);
             }
             bg.draw(Images.stars, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), px*0.01f - (float)Gdx.graphics.getWidth()/800f, py*0.01f - (float)Gdx.graphics.getHeight()/800f, px*0.01f + (float)Gdx.graphics.getWidth()/800f, py*0.01f + (float)Gdx.graphics.getHeight()/800f);
-
 //            bg.draw(Images.trees, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), px*0.01f - (float)Gdx.graphics.getWidth()/800f, py*0.01f - (float)Gdx.graphics.getHeight()/800f, px*0.01f + (float)Gdx.graphics.getWidth()/800f, py*0.01f + (float)Gdx.graphics.getHeight()/800f);
         bg.end();
 
@@ -117,7 +121,7 @@ public class Renderer {
             shapeRenderer.setColor(FIGHT_COLOR);
         }
         for(int i = 0; i < entities.size(); i++){
-            entities.get(i).renderSpeechBubble(shapeRenderer, batch);
+            entities.get(i).renderSpeechBubble(shapeRenderer, batch, player.getBody().getPosition().x, player.getBody().getPosition().y);
         }
 
 
