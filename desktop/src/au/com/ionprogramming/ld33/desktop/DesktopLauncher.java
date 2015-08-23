@@ -7,6 +7,7 @@ import au.com.ionprogramming.ld33.LD33Game;
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
+		config.title = "Ectoplasm Isn't Everything";
 		new LwjglApplication(new LD33Game(), config);
 
 	}

@@ -18,7 +18,6 @@ public class Images {
     public static Texture grass7;
     public static Texture grass8;
 
-    public static Texture trees;
     public static Texture stars;
 
     public static Texture[] monster;
@@ -34,21 +33,18 @@ public class Images {
 
         IPL = new Texture("IonProgrammingLogo640.png");
 
-        grass0 = new Texture("test_0.png");
-        grass1 = new Texture("test_1.png");
-        grass2 = new Texture("test_2.png");
-        grass3 = new Texture("test_3.png");
-        grass4 = new Texture("test_4.png");
-        grass5 = new Texture("test_5.png");
-        grass6 = new Texture("test_6.png");
-        grass7 = new Texture("test_7.png");
-        grass8 = new Texture("test_8.png");
+        grass0 = new Texture("grass/grass_0.png");
+        grass1 = new Texture("grass/grass_1.png");
+        grass2 = new Texture("grass/grass_2.png");
+        grass3 = new Texture("grass/grass_3.png");
+        grass4 = new Texture("grass/grass_4.png");
+        grass5 = new Texture("grass/grass_5.png");
+        grass6 = new Texture("grass/grass_6.png");
+        grass7 = new Texture("grass/grass_7.png");
+        grass8 = new Texture("grass/grass_8.png");
 
 
         grass = new Texture[]{grass0, grass1, grass2, grass3, grass4, grass5, grass6, grass7, grass8};
-
-
-        trees = new Texture("background.png");
 
         stars = new Texture("backgroundStars.png");
         stars.setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat);
