@@ -25,7 +25,8 @@ public class Player extends Entity{
         this.t = t[0];
     }
 
-    private void update(){
+    @Override
+    public void update(){
         if(Gdx.input.isKeyPressed(Input.Keys.A)){
             flip = true;
 
@@ -60,10 +61,7 @@ public class Player extends Entity{
                 sprite = 0;
             }
         }
-        update();
-
-
-        batch.draw(Images.monster[sprite], body.getPosition().x - size.x/2, body.getPosition().y - size.y/2, size.x, size.y, 0, 0, Images.monster[sprite].getWidth(), Images.monster[sprite].getHeight(), flip, false);
+        batch.draw(Images.monster[sprite], body.getPosition().x - size.x / 2, body.getPosition().y - size.y / 2, size.x, size.y, 0, 0, Images.monster[sprite].getWidth(), Images.monster[sprite].getHeight(), flip, false);
     }
 
 }

@@ -24,19 +24,20 @@ public class Firefly extends Entity{
         p.attachToBody(body);
     }
 
+    @Override
     public void update(){
-        int i = rand.nextInt(80);
+        int i = rand.nextInt(5);
         if(i == 0){
             body.applyLinearImpulse(-0.001f, 0, body.getPosition().x, body.getPosition().y, true);
         }
-        else if(i == 20){
+        else if(i == 1){
             body.applyLinearImpulse(0.001f, 0, body.getPosition().x, body.getPosition().y, true);
         }
-        else if(i == 40){
+        else if(i == 2){
             body.applyLinearImpulse(0, -0.001f, body.getPosition().x, body.getPosition().y, true);
         }
-        else if(i == 60){
-            body.applyLinearImpulse(0, -0.001f, body.getPosition().x, body.getPosition().y, true);
+        else if(i == 3){
+            body.applyLinearImpulse(0, 0.001f, body.getPosition().x, body.getPosition().y, true);
         }
     }
 }

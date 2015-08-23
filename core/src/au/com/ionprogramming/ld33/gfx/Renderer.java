@@ -1,6 +1,5 @@
 package au.com.ionprogramming.ld33.gfx;
 
-
 import au.com.ionprogramming.ld33.entities.Entity;
 import au.com.ionprogramming.ld33.entities.Firefly;
 import au.com.ionprogramming.ld33.entities.Player;
@@ -29,7 +28,6 @@ public class Renderer {
     public static boolean FIGHT_MODE = false;
     public static Color FIGHT_COLOR = new Color(0.8f, 0.4f, 0.4f, 1f);
 
-    public static ArrayList<Entity> cubes = new ArrayList<Entity>();
     public static ArrayList<Entity> entities = new ArrayList<Entity>();
 
     private float camWidth = 8;
@@ -68,22 +66,20 @@ public class Renderer {
                 0, 3, 8, 6, -1, -1, -1, -1, -1, -1, -1, 3, 6, -1, -1, -1, -1, -1, -1, -1,
                 1, 2, 8, 7, 1, 1, 1, 1, 1, 1, 1, 2, 7, 1, 1, 1, 1, 1, 1, 1}, entities, physics, lighting);
 
-        fly = new Firefly(4, 3.5f, physics.getWorld(), lighting);
+        fly = new Firefly(4, 5f, physics.getWorld(), lighting);
         entities.add(fly);
         entities.add(new Player(0, 2, 1, 2, physics.getWorld(), Images.monster, lighting));
 
         testBubble = new SpeechBubble("Hello! Lucas is a bloody \nDICK NOSE!", 2f);           //test
         entities.get(entities.size() - 1).setSpeechBubble(testBubble);
+        entities.get(entities.size() - 1).setSpeechActive(true);
     }
 
     public void render(){
 
-
         if(Gdx.input.isKeyPressed(Input.Keys.R)){
             FIGHT_MODE = true;
         }
-
-
 
         setCamPos(entities.get(entities.size() - 1));
         cam.update();
@@ -111,6 +107,7 @@ public class Renderer {
             }
 
             for(int i = 0; i < entities.size(); i++){
+                entities.get(i).update();
                 entities.get(i).render(shapeRenderer, batch);
             }
         batch.end();
@@ -121,7 +118,6 @@ public class Renderer {
         for(int i = 0; i < entities.size(); i++){
             entities.get(i).renderSpeechBubble(shapeRenderer, batch);
         }
-        fly.update();
 
 
 //        System.out.println("FPS: " + Gdx.graphics.getFramesPerSecond() + ", Player: " + px + ", " + py);
