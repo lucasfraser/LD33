@@ -1,9 +1,6 @@
 package au.com.ionprogramming.ld33.gfx;
 
-import au.com.ionprogramming.ld33.entities.Entity;
-import au.com.ionprogramming.ld33.entities.Firefly;
-import au.com.ionprogramming.ld33.entities.Player;
-import au.com.ionprogramming.ld33.entities.Rabbit;
+import au.com.ionprogramming.ld33.entities.*;
 import au.com.ionprogramming.ld33.logic.Physics;
 import au.com.ionprogramming.ld33.map.Map;
 import com.badlogic.gdx.Gdx;
@@ -70,7 +67,7 @@ public class Renderer {
         entities.add(new Firefly(2, 5f, physics.getWorld(), lighting));
         entities.add(new Firefly(6, 5f, physics.getWorld(), lighting));
         entities.add(new Firefly(8, 5f, physics.getWorld(), lighting));
-        entities.add(new Rabbit(3, 5f, physics.getWorld(), lighting));
+        entities.add(new Hedgehog(3, 5f, physics.getWorld(), lighting));
         player = new Player(0, 2, physics.getWorld(), Images.monster, lighting);
         entities.add(player);
 

@@ -35,7 +35,7 @@ public class Lighting {
 
         rayHandler = new RayHandler(phys.getWorld());
 
-        rayHandler.setAmbientLight(new Color(0.3f, 0.3f, 0.3f, 0.3f));
+        rayHandler.setAmbientLight(new Color(0.2f, 0.2f, 0.2f, 0.3f));
 
 
 //

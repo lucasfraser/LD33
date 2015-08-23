@@ -30,7 +30,12 @@ public abstract class Entity {
 		size = new Vector2(width, height);
 
 		PolygonShape shape = new PolygonShape();
-		shape.setAsBox(size.x / 2, size.y / 2);
+        if(moving){
+            shape.setAsBox(size.x / 2 - 0.1f*size.x, size.y / 2 - 0.1f*size.y);
+        }
+        else {
+            shape.setAsBox(size.x / 2, size.y / 2);
+        }
 		PolygonShape round = null;
 		if(rounded) {
 			round = new PolygonShape();

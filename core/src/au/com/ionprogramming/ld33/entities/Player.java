@@ -25,7 +25,7 @@ public class Player extends Entity{
         super(true, x, y, 0.9f, 1.8f, world, lighting, true, t[0], true);
         this.t = t[0];
         p = new PointLight(lighting.getRayHandler(), 256, new Color(1, 1, 1, 0.7f), 2f, x, y);
-        body.setGravityScale(0.7f);
+        body.setGravityScale(0.5f);
         p.attachToBody(body);
     }
 
@@ -33,12 +33,10 @@ public class Player extends Entity{
     public void update(){
         if(Gdx.input.isKeyPressed(Input.Keys.A)){
             flip = true;
-
             body.applyLinearImpulse(-0.1f, 0, body.getPosition().x, body.getPosition().y, true);
         }
         if(Gdx.input.isKeyPressed(Input.Keys.D)){
             flip = false;
-
             body.applyLinearImpulse(0.1f, 0, body.getPosition().x, body.getPosition().y, true);
         }
         if(Gdx.input.isKeyJustPressed(Input.Keys.SPACE)){
@@ -55,8 +53,7 @@ public class Player extends Entity{
     @Override
     public void render(ShapeRenderer r, SpriteBatch batch){
         tick++;
-
-        if(tick > 10 && body.isAwake()){
+        if(tick > 10){
             tick = 0;
             if(sprite < 3){
                 sprite++;

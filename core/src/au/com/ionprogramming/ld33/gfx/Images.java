@@ -18,6 +18,8 @@ public class Images {
     public static Texture grass7;
     public static Texture grass8;
 
+    public static Texture[] tree;
+
     public static Texture stars;
 
     public static Texture[] monster;
@@ -57,6 +59,13 @@ public class Images {
         grass7 = new Texture("grass/grass_7.png");
         grass8 = new Texture("grass/grass_8.png");
 
+        tree = new Texture[]{
+                new Texture("images/tree1.png"),
+                new Texture("images/tree2.png"),
+                new Texture("images/tree3.png"),
+                new Texture("images/tree4.png"),
+                new Texture("images/tree5.png"),
+                new Texture("images/tree6.png")};
 
         grass = new Texture[]{grass0, grass1, grass2, grass3, grass4, grass5, grass6, grass7, grass8};
 
