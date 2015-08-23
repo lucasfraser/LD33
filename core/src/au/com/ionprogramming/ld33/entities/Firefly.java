@@ -18,7 +18,8 @@ public class Firefly extends Entity{
 
     public Firefly(float x, float y, World world, Lighting lighting){
         super(true, x, y, 0.05f, 0.05f, world, lighting, true, Images.firefly, false);
-        body.setGravityScale(0);
+        body.setGravityScale(0.001f);
+        body.setLinearDamping(5f);
         rand = new Random();
         p = new PointLight(lighting.getRayHandler(), 256, Color.GOLD, 0.5f, x, y);
         p.attachToBody(body);
@@ -26,7 +27,7 @@ public class Firefly extends Entity{
 
     @Override
     public void update(){
-        int i = rand.nextInt(5);
+        int i = rand.nextInt(40);
         if(i == 0){
             body.applyLinearImpulse(-0.001f, 0, body.getPosition().x, body.getPosition().y, true);
         }

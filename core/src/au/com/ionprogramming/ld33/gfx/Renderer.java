@@ -68,7 +68,7 @@ public class Renderer {
 
         fly = new Firefly(4, 5f, physics.getWorld(), lighting);
         entities.add(fly);
-        entities.add(new Player(0, 2, 1, 2, physics.getWorld(), Images.monster, lighting));
+        entities.add(new Player(0, 2, physics.getWorld(), Images.monster, lighting));
 
         testBubble = new SpeechBubble("Hello! Lucas is a bloody \nDICK NOSE!", 2f);           //test
         entities.get(entities.size() - 1).setSpeechBubble(testBubble);

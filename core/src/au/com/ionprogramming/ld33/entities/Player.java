@@ -20,8 +20,8 @@ public class Player extends Entity{
 
     boolean flip;
 
-    public Player(float x, float y, float width, float height, World world, Texture[] t, Lighting lighting){
-        super(true, x, y, width, height, world, lighting, true, t[0], true);
+    public Player(float x, float y, World world, Texture[] t, Lighting lighting){
+        super(true, x, y, 0.9f, 1.8f, world, lighting, true, t[0], true);
         this.t = t[0];
     }
 
@@ -38,7 +38,7 @@ public class Player extends Entity{
             body.applyLinearImpulse(0.1f, 0, body.getPosition().x, body.getPosition().y, true);
         }
         if(Gdx.input.isKeyJustPressed(Input.Keys.SPACE)){
-            body.applyLinearImpulse(0, 8f, body.getPosition().x, body.getPosition().y, true);
+            body.applyLinearImpulse(0, 6f, body.getPosition().x, body.getPosition().y, true);
         }
 
         Renderer.px = body.getPosition().x - size.x/2;
