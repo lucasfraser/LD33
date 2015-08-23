@@ -26,7 +26,8 @@ public class Player extends Entity{
     public Player(float x, float y, World world, Texture[] t, Lighting lighting){
         super(true, x, y, 0.9f, 1.8f, world, lighting, true, t[0], true);
         this.t = t[0];
-        p = new PointLight(lighting.getRayHandler(), 256, new Color(1, 1, 1, 0.5f), 2f, x, y);
+        p = new PointLight(lighting.getRayHandler(), 256, new Color(1, 1, 1, 0.7f), 2f, x, y);
+        body.setGravityScale(0.7f);
         p.attachToBody(body);
     }
 
@@ -43,7 +44,7 @@ public class Player extends Entity{
             body.applyLinearImpulse(0.1f, 0, body.getPosition().x, body.getPosition().y, true);
         }
         if(Gdx.input.isKeyJustPressed(Input.Keys.SPACE)){
-            body.applyLinearImpulse(0, 6f, body.getPosition().x, body.getPosition().y, true);
+            body.applyLinearImpulse(0, 3f, body.getPosition().x, body.getPosition().y, true);
         }
 
         Renderer.px = body.getPosition().x - size.x/2;
