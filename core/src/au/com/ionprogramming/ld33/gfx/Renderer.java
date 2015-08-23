@@ -54,7 +54,7 @@ public class Renderer {
         bg = new SpriteBatch();
         shapeRenderer = new ShapeRenderer();
 
-        testBubble = new SpeechBubble("Hello! Lucas is a bloody DICK NOSE!", 0.8f, 2.5f, 2f, 1f);           //test
+        testBubble = new SpeechBubble("Hello! Lucas is a bloody \nDICK NOSE!", 1f, 1f, 2f);           //test
 
         Map.loadMap(20, 8, new int[]{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
                 -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 4, 1, 5, -1, -1,
