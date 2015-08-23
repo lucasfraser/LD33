@@ -110,7 +110,7 @@ public class Renderer {
                 batch.setColor(FIGHT_COLOR);
             }
 
-        for(int i = 0; i < entities.size(); i++){
+            for(int i = 0; i < entities.size(); i++){
                 entities.get(i).render(shapeRenderer, batch);
             }
         batch.end();
@@ -118,7 +118,6 @@ public class Renderer {
         if(FIGHT_MODE){
             shapeRenderer.setColor(FIGHT_COLOR);
         }
-        testBubble.render(batch, shapeRenderer);
         for(int i = 0; i < entities.size(); i++){
             entities.get(i).renderSpeechBubble(shapeRenderer, batch);
         }
