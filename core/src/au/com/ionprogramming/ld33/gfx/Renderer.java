@@ -42,8 +42,7 @@ public class Renderer {
     private SpriteBatch bg;
     private ShapeRenderer shapeRenderer;
 
-    private SpeechBubble testBubble;                    //test
-    private Firefly fly;
+    private SpeechBubble testBubble;
 
     public Renderer(Physics physics, Lighting lighting){
 
@@ -66,11 +65,13 @@ public class Renderer {
                 0, 3, 8, 6, -1, -1, -1, -1, -1, -1, -1, 3, 6, -1, -1, -1, -1, -1, -1, -1,
                 1, 2, 8, 7, 1, 1, 1, 1, 1, 1, 1, 2, 7, 1, 1, 1, 1, 1, 1, 1}, entities, physics, lighting);
 
-        fly = new Firefly(4, 5f, physics.getWorld(), lighting);
-        entities.add(fly);
+        entities.add(new Firefly(4, 5f, physics.getWorld(), lighting));
+        entities.add(new Firefly(2, 5f, physics.getWorld(), lighting));
+        entities.add(new Firefly(6, 5f, physics.getWorld(), lighting));
+        entities.add(new Firefly(8, 5f, physics.getWorld(), lighting));
         entities.add(new Player(0, 2, physics.getWorld(), Images.monster, lighting));
 
-        testBubble = new SpeechBubble("Hello! Lucas is a bloody \nDICK NOSE!", 2f);           //test
+        testBubble = new SpeechBubble("Do you know the Muffin Man?", 2f);           //test
         entities.get(entities.size() - 1).setSpeechBubble(testBubble);
         entities.get(entities.size() - 1).setSpeechActive(true);
     }

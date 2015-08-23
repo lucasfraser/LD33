@@ -33,7 +33,7 @@ public class SpeechBubble {
         font = new BitmapFont();
         glyph = new GlyphLayout();
         font.setUseIntegerPositions(false);
-        font.getData().setScale(0.02f, 0.02f);
+        font.getData().setScale(0.015f, 0.015f);
         this.text = text;
         this.width = width;
         glyph.setText(font, text, 0, text.length() - 1, Color.FOREST, width, Align.left, true, null);
