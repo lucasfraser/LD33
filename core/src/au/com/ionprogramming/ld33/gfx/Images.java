@@ -15,6 +15,7 @@ public class Images {
     public static Texture[] tree;
 
     public static Texture[] monster;
+    public static Texture[] monsterHat;
 
     public static Texture stars;
 
@@ -41,6 +42,9 @@ public class Images {
     public static Texture snake;
     public static Texture turtleHat;
     public static Texture turtleNoHat;
+
+    public static Texture alpacca;
+    public static Texture pig;
 
     public static Texture play;
 
@@ -114,11 +118,21 @@ public class Images {
         turtleHat = new Texture("images/turtleHat.png");
         turtleNoHat = new Texture("images/turtleNoHat.png");
 
+        alpacca = new Texture("images/alpacca.png");
+        pig = new Texture("images/pig.png");
+
         monster = new Texture[]{
                 new Texture("monster/0.png"),
                 new Texture("monster/1.png"),
                 new Texture("monster/2.png"),
                 new Texture("monster/3.png")
+        };
+
+        monsterHat = new Texture[]{
+                new Texture("monster/hat_0.png"),
+                new Texture("monster/hat_1.png"),
+                new Texture("monster/hat_2.png"),
+                new Texture("monster/hat_3.png")
         };
 
         play = new Texture("play.png");

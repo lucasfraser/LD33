@@ -2,6 +2,8 @@ package au.com.ionprogramming.ld33.entities;
 
 import au.com.ionprogramming.ld33.gfx.Images;
 import au.com.ionprogramming.ld33.gfx.Lighting;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 
 import java.util.Random;
@@ -13,7 +15,7 @@ public class Alpacca extends Entity{
     protected Random rand;
 
     public Alpacca(float x, float y, World world, Lighting lighting){
-        super(true, x, y, 1f, 1f, world, lighting, true, Images.rabbitBig, false);
+        super(true, x, y, 1f, 2f, world, lighting, true, Images.alpacca, false);
         rand = new Random();
 
     }
@@ -29,6 +31,11 @@ public class Alpacca extends Entity{
             body.applyLinearImpulse(1f, 0, body.getPosition().x, body.getPosition().y, true);
             flip = true;
         }
+    }
+
+    @Override
+    public void render(ShapeRenderer r, SpriteBatch batch){
+        batch.draw(tex, body.getPosition().x - size.x / 2, body.getPosition().y - size.y / 2, size.x, size.y, 0, 0, 16, 32, flip, false);
     }
 
 }
