@@ -17,7 +17,7 @@ public class Alpaca extends Entity{
     public Alpaca(float x, float y, World world, Lighting lighting){
         super(true, x, y, 1f, 2f, world, lighting, true, Images.alpaca, false);
         rand = new Random();
-
+        setSound("Sounds/alpaca.mp3");
     }
 
     @Override

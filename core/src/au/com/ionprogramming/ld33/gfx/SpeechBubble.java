@@ -81,4 +81,8 @@ public class SpeechBubble {
     public void resetProgress(){
         progress = 0;
     }
+
+    public float getProgress(){
+        return progress;
+    }
 }

@@ -17,7 +17,7 @@ public class Cow extends Entity{
     public Cow(float x, float y, World world, Lighting lighting){
         super(true, x, y, 2f, 1f, world, lighting, true, Images.cow, false);
         rand = new Random();
-
+        setSound("Sounds/cow.mp3");
     }
 
     @Override

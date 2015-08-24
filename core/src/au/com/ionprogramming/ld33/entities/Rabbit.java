@@ -15,7 +15,7 @@ public class Rabbit extends Entity{
     public Rabbit(float x, float y, World world, Lighting lighting){
         super(true, x, y, 1f, 1f, world, lighting, true, Images.rabbitBig, false);
         rand = new Random();
-
+        setSound("Sounds/rabbit.mp3");
     }
 
     @Override

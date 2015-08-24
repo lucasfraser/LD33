@@ -13,6 +13,7 @@ public class Snake extends Entity{
 
     public Snake(float x, float y, World world, Lighting lighting){
         super(true, x, y, 1f, 1f, world, lighting, true, Images.snake, false);
+        setSound("Sounds/snake.mp3");
     }
 
 }

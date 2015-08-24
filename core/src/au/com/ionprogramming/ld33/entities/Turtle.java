@@ -16,6 +16,7 @@ public class Turtle extends Entity{
         super(true, x, y, 1f, 1f, world, lighting, true, Images.turtleHat, false);
         rand = new Random();
         flipY = true;
+        setSound("Sounds/turtle.mp3");
     }
 
     public void flipUp(){

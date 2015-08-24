@@ -15,6 +15,7 @@ public class Duck extends Entity{
     public Duck(float x, float y, World world, Lighting lighting){
         super(true, x, y, 1f, 1f, world, lighting, true, Images.duckBig, false);
         rand = new Random();
+        setSound("Sounds/duck.mp3");
     }
 
     @Override

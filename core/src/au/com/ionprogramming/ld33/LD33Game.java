@@ -30,7 +30,7 @@ public class LD33Game extends ApplicationAdapter {
 		lighting = new Lighting(physics);
 		renderer = new Renderer(physics, lighting);
 		sound = new SoundHandler();
-//		sound.play("sounds/song1.mp3", true);
+		sound.play("sounds/song1.mp3", true);
 
 		batch = new SpriteBatch();
 
@@ -52,7 +52,7 @@ public class LD33Game extends ApplicationAdapter {
 		}
 		else{
 			renderer.render(physics.getWorld());
-			physics.render(renderer.getCam());
+//			physics.render(renderer.getCam());
 			lighting.render(renderer.getCam());
 			Hud.render(batch);
 			physics.doPhysicsStep(Gdx.graphics.getDeltaTime());

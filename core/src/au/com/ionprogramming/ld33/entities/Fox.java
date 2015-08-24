@@ -16,7 +16,7 @@ public class Fox extends Entity{
     public Fox(float x, float y, World world, Lighting lighting){
         super(true, x, y, 1f, 1f, world, lighting, true, Images.fox, false);
         rand = new Random();
-
+        setSound("Sounds/fox.mp3");
     }
 
     @Override

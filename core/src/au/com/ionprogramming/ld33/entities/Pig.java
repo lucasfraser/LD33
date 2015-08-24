@@ -15,7 +15,7 @@ public class Pig extends Entity{
     public Pig(float x, float y, World world, Lighting lighting){
         super(true, x, y, 1f, 1f, world, lighting, true, Images.pig, false);
         rand = new Random();
-
+        setSound("Sounds/pig.mp3");
     }
 
     @Override

@@ -16,12 +16,12 @@ import com.badlogic.gdx.physics.box2d.World;
  */
 public class Player extends Entity{
 
-    Texture t;
+    Texture[] t;
     private PointLight p;
 
     public Player(float x, float y, World world, Lighting lighting){
         super(true, x, y, 0.9f, 1.8f, world, lighting, true, Images.monster[0], true);
-        this.t = Images.monster[0];
+        this.t = Images.monster;
         p = new PointLight(lighting.getRayHandler(), 256, new Color(1, 1, 1, 0.7f), 2f, x, y);
         body.setGravityScale(0.5f);
         p.attachToBody(body);
@@ -57,7 +57,11 @@ public class Player extends Entity{
                 sprite = 0;
             }
         }
-        batch.draw(Images.monster[sprite], body.getPosition().x - size.x / 2, body.getPosition().y - size.y / 2, size.x, size.y, 0, 0, Images.monster[sprite].getWidth(), Images.monster[sprite].getHeight(), flipX, false);
+        batch.draw(t[sprite], body.getPosition().x - size.x / 2, body.getPosition().y - size.y / 2, size.x, size.y, 0, 0, t[sprite].getWidth(), t[sprite].getHeight(), flipX, false);
+    }
+
+    public void setTexSet(Texture[] t){
+        this.t = t;
     }
 
 }

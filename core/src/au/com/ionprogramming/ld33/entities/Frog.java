@@ -17,6 +17,7 @@ public class Frog extends Entity{
         super(true, x, y, 1f, 1f, world, lighting, true, Images.frogBig, false);
         rand = new Random();
         sick = true;
+        setSound("Sounds/fox.mp3");
     }
 
     @Override

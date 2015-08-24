@@ -1,6 +1,7 @@
 package au.com.ionprogramming.ld33.logic;
 
 import au.com.ionprogramming.ld33.entities.*;
+import au.com.ionprogramming.ld33.gfx.Images;
 import au.com.ionprogramming.ld33.gfx.Lighting;
 import au.com.ionprogramming.ld33.gfx.Renderer;
 import au.com.ionprogramming.ld33.gfx.SpeechBubble;
@@ -75,7 +76,7 @@ public class Logic {
         pig.setSpeechActive(true);
         snake.setSpeechBubble(new SpeechBubble("Oh, I'm freezing out here!", 2));
         snake.setSpeechActive(true);
-        turtle.setSpeechBubble(new SpeechBubble("Blimey! Some red whiskery fellow flipped me upside down and left me to rot! Gimme a hand would you?", 2));
+        turtle.setSpeechBubble(new SpeechBubble("Blimey! Some red whiskery fellow flipped me upside down and left me to rot! Gimme a hand would you? I'll give you a fancy hat! [y]", 2));
         turtle.setSpeechActive(true);
 
         Renderer.entities.add(balloon);
@@ -180,6 +181,7 @@ public class Logic {
         if(haveScarf && alpaca.answerYes()){
             setHaveScarf(false);
             alpaca.setSpeechBubble(new SpeechBubble("Don't eat that. Strictly plants only. Hehe...", 2));
+            alpaca.setTex(Images.alpacaScarf);
             setHaveManure(true);
         }
     }
@@ -289,6 +291,8 @@ public class Logic {
     }
 
     public void setHaveHat(boolean haveHat) {
+        turtle.setTex(Images.turtleNoHat);
+        player.setTexSet(Images.monsterHat);
         this.haveHat = haveHat;
     }
 

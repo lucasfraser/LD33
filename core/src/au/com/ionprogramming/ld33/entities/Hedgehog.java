@@ -15,7 +15,7 @@ public class Hedgehog extends Entity{
     public Hedgehog(float x, float y, World world, Lighting lighting){
         super(true, x, y, 1f, 1f, world, lighting, true, Images.hedgehog, false);
         rand = new Random();
-
+        setSound("Sounds/hedgehog.mp3");
     }
 
     @Override
