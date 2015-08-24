@@ -1,10 +1,7 @@
 package au.com.ionprogramming.ld33;
 
 
-import au.com.ionprogramming.ld33.gfx.Images;
-import au.com.ionprogramming.ld33.gfx.IntroScreen;
-import au.com.ionprogramming.ld33.gfx.Lighting;
-import au.com.ionprogramming.ld33.gfx.Renderer;
+import au.com.ionprogramming.ld33.gfx.*;
 import au.com.ionprogramming.ld33.logic.Physics;
 import au.com.ionprogramming.ld33.sfx.SoundHandler;
 import com.badlogic.gdx.ApplicationAdapter;
@@ -18,8 +15,8 @@ public class LD33Game extends ApplicationAdapter {
 	private Lighting lighting;
 	private SoundHandler sound;
 
-	public static boolean INTRO = false;
-	public static boolean TITLE_SCREEN = false;
+	public static boolean INTRO = true;
+	public static boolean TITLE_SCREEN = true;
 
 	private SpriteBatch batch;
 
@@ -49,16 +46,13 @@ public class LD33Game extends ApplicationAdapter {
 			batch.end();
 		}
 		else if(TITLE_SCREEN){
-
+			batch.begin();
+				Menu.render(batch);
+			batch.end();
 		}
 		else{
-//			batch.begin();
-//				batch.draw(Images.stars,0,0);
-//				batch.draw(Images.trees, 0, 0);
-//			batch.end();
-
 			renderer.render();
-//			physics.render(renderer.getCam());
+			physics.render(renderer.getCam());
 			lighting.render(renderer.getCam());
 			physics.doPhysicsStep(Gdx.graphics.getDeltaTime());
 		}

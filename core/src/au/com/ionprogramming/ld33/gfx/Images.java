@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.Texture;
 public class Images {
 
     public static Texture IPL;
+    public static Texture Title;
 
     public static Texture[] grass;
 
@@ -35,6 +36,8 @@ public class Images {
     public static void loadImages(){
 
         IPL = new Texture("IonProgrammingLogo640.png");
+
+        Title = new Texture("title.png");
 
         grass = new Texture[]{
               new Texture("grass/1_grass_2.png"),

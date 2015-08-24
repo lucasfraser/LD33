@@ -18,7 +18,7 @@ public class IntroScreen {
         threshold++;
         batch.draw(Images.IPL, Gdx.graphics.getWidth()/2 - Images.IPL.getWidth()/2, Gdx.graphics.getHeight()/2 - Images.IPL.getHeight()/2 );
 
-        if(threshold > 180){
+        if(threshold > 120){
             LD33Game.INTRO = false;
         }
     }
