@@ -33,6 +33,8 @@ public class Renderer {
 
     private SpriteBatch batch;
     private SpriteBatch bg;
+
+    private SpriteBatch HUDbatch;
     private ShapeRenderer shapeRenderer;
 
     private Logic logic;
@@ -50,6 +52,7 @@ public class Renderer {
 
         batch = new SpriteBatch();
         bg = new SpriteBatch();
+        HUDbatch  = new SpriteBatch();
         shapeRenderer = new ShapeRenderer();
         logic = new Logic(physics.getWorld(), lighting);
 
@@ -131,6 +134,9 @@ public class Renderer {
         for(int i = 0; i < entities.size(); i++){
             entities.get(i).renderSpeechBubble(shapeRenderer, batch, logic.getPlayer().getBody().getPosition().x, logic.getPlayer().getBody().getPosition().y);
         }
+
+        Hud.render(HUDbatch, logic);
+
         logic.update(world);
 
     }
@@ -168,6 +174,8 @@ public class Renderer {
     public void setCamBounds(float width, float height){
         cam.viewportHeight = camHeight;
         cam.viewportWidth = camWidth*(width/height);
+
+        HUDbatch.getProjectionMatrix().setToOrtho2D(0, 0, width, height);
     }
 
     public OrthographicCamera getCam() {

@@ -51,6 +51,8 @@ public class Images {
     public static Texture play;
     public static Texture black;
 
+    public static Texture scone;
+
 
 
 
@@ -147,5 +149,7 @@ public class Images {
         };
 
         play = new Texture("play.png");
+
+        scone = new Texture("images/scone.png");
     }
 }
