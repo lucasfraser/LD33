@@ -21,9 +21,9 @@ public class Player extends Entity{
     Texture t;
     private PointLight p;
 
-    public Player(float x, float y, World world, Texture[] t, Lighting lighting){
-        super(true, x, y, 0.9f, 1.8f, world, lighting, true, t[0], true);
-        this.t = t[0];
+    public Player(float x, float y, World world, Lighting lighting){
+        super(true, x, y, 0.9f, 1.8f, world, lighting, true, Images.monster[0], true);
+        this.t = Images.monster[0];
         p = new PointLight(lighting.getRayHandler(), 256, new Color(1, 1, 1, 0.7f), 2f, x, y);
         body.setGravityScale(0.5f);
         p.attachToBody(body);
@@ -42,9 +42,6 @@ public class Player extends Entity{
         if(Gdx.input.isKeyJustPressed(Input.Keys.SPACE)){
             body.applyLinearImpulse(0, 3f, body.getPosition().x, body.getPosition().y, true);
         }
-
-        Renderer.px = body.getPosition().x - size.x/2;
-        Renderer.py = body.getPosition().y - size.y/2;
     }
 
     int tick = 0;

@@ -1,6 +1,7 @@
 package au.com.ionprogramming.ld33.gfx;
 
 import au.com.ionprogramming.ld33.entities.*;
+import au.com.ionprogramming.ld33.logic.Logic;
 import au.com.ionprogramming.ld33.logic.Physics;
 import au.com.ionprogramming.ld33.map.Map;
 import com.badlogic.gdx.Gdx;
@@ -17,11 +18,6 @@ import java.util.ArrayList;
  * Created by Lucas on 3/08/2015.
  */
 public class Renderer {
-
-
-    public static float px = 0;
-    public static float py = 0;
-
 
     public static boolean FIGHT_MODE = false;
     public static Color FIGHT_COLOR = new Color(0.8f, 0.4f, 0.4f, 1f);
@@ -40,7 +36,7 @@ public class Renderer {
     private SpriteBatch bg;
     private ShapeRenderer shapeRenderer;
 
-    private Player player;
+    private Logic logic;
 
     public Renderer(Physics physics, Lighting lighting){
 
@@ -53,6 +49,7 @@ public class Renderer {
         batch = new SpriteBatch();
         bg = new SpriteBatch();
         shapeRenderer = new ShapeRenderer();
+        logic = new Logic(physics.getWorld(), lighting);
 
         Map.loadMap(20, 8, new int[]{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
                 -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 4, 1, 5, -1, -1,
@@ -67,16 +64,9 @@ public class Renderer {
         entities.add(new Firefly(2, 5f, physics.getWorld(), lighting));
         entities.add(new Firefly(6, 5f, physics.getWorld(), lighting));
         entities.add(new Firefly(8, 5f, physics.getWorld(), lighting));
-        entities.add(new Hedgehog(3, 5f, physics.getWorld(), lighting));
-        entities.add(new Balloon(6, 4, physics.getWorld(), lighting));
-        player = new Player(0, 2, physics.getWorld(), Images.monster, lighting);
-        entities.add(player);
 
-        player.setSpeechBubble(new SpeechBubble("Do you know the Muffin Man?", 2f));
-        player.setSpeechActive(true);
+        entities.addAll(logic.getEntities());
 
-        entities.get(entities.size() - 2).setSpeechBubble(new SpeechBubble("Indeedy I do, good sir ghost!", 2f));
-        entities.get(entities.size() - 2).setSpeechActive(true);
     }
 
     public void render(){
@@ -85,7 +75,7 @@ public class Renderer {
             FIGHT_MODE = true;
         }
 
-        setCamPos(player);
+        setCamPos(logic.getPlayer());
         cam.update();
 
         Gdx.gl.glClearColor(0.1f, 0.1f, 0.1f, 1);
@@ -100,7 +90,11 @@ public class Renderer {
             if(FIGHT_MODE){
                 bg.setColor(FIGHT_COLOR);
             }
-            bg.draw(Images.stars, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), px*0.01f - (float)Gdx.graphics.getWidth()/800f, py*0.01f - (float)Gdx.graphics.getHeight()/800f, px*0.01f + (float)Gdx.graphics.getWidth()/800f, py*0.01f + (float)Gdx.graphics.getHeight()/800f);
+            bg.draw(Images.stars, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight(),
+                    (logic.getPlayer().getBody().getPosition().x - logic.getPlayer().getSize().x/2)*0.01f - (float)Gdx.graphics.getWidth()/800f,
+                    (logic.getPlayer().getBody().getPosition().y - logic.getPlayer().getSize().y)*0.01f - (float)Gdx.graphics.getHeight()/800f,
+                    (logic.getPlayer().getBody().getPosition().x - logic.getPlayer().getSize().x)*0.01f + (float)Gdx.graphics.getWidth()/800f,
+                    (logic.getPlayer().getBody().getPosition().y - logic.getPlayer().getSize().y)*0.01f + (float)Gdx.graphics.getHeight()/800f);
 //            bg.draw(Images.trees, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), px*0.01f - (float)Gdx.graphics.getWidth()/800f, py*0.01f - (float)Gdx.graphics.getHeight()/800f, px*0.01f + (float)Gdx.graphics.getWidth()/800f, py*0.01f + (float)Gdx.graphics.getHeight()/800f);
         bg.end();
 
@@ -119,7 +113,7 @@ public class Renderer {
             shapeRenderer.setColor(FIGHT_COLOR);
         }
         for(int i = 0; i < entities.size(); i++){
-            entities.get(i).renderSpeechBubble(shapeRenderer, batch, player.getBody().getPosition().x, player.getBody().getPosition().y);
+            entities.get(i).renderSpeechBubble(shapeRenderer, batch, logic.getPlayer().getBody().getPosition().x, logic.getPlayer().getBody().getPosition().y);
         }
 
 
