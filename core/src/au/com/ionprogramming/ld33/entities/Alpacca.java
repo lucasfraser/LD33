@@ -15,7 +15,7 @@ public class Alpacca extends Entity{
     protected Random rand;
 
     public Alpacca(float x, float y, World world, Lighting lighting){
-        super(true, x, y, 1f, 2f, world, lighting, true, Images.alpacca, false);
+        super(true, x, y, 1f, 2f, world, lighting, true, Images.alpaca, false);
         rand = new Random();
 
     }

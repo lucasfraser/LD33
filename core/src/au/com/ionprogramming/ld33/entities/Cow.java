@@ -13,7 +13,7 @@ public class Cow extends Entity{
     protected Random rand;
 
     public Cow(float x, float y, World world, Lighting lighting){
-        super(true, x, y, 1f, 1f, world, lighting, true, Images.rabbitBig, false);
+        super(true, x, y, 1f, 1f, world, lighting, true, Images.cow, false);
         rand = new Random();
 
     }

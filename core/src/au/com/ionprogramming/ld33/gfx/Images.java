@@ -43,7 +43,9 @@ public class Images {
     public static Texture turtleHat;
     public static Texture turtleNoHat;
 
-    public static Texture alpacca;
+    public static Texture alpaca;
+    public static Texture alpacaScarf;
+    public static Texture cow;
     public static Texture pig;
 
     public static Texture play;
@@ -118,8 +120,10 @@ public class Images {
         turtleHat = new Texture("images/turtleHat.png");
         turtleNoHat = new Texture("images/turtleNoHat.png");
 
-        alpacca = new Texture("images/alpacca.png");
+        alpaca = new Texture("images/alpacaScarf.png");
         pig = new Texture("images/pig.png");
+        cow = new Texture("images/cow.png");
+
 
         monster = new Texture[]{
                 new Texture("monster/0.png"),
