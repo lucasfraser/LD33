@@ -101,6 +101,7 @@ public abstract class Entity {
 	public void renderSpeechBubble(ShapeRenderer r, SpriteBatch batch, float playerX, float playerY){
 		if(bubble != null && speechActive && (Math.abs(body.getPosition().x - playerX) < talkDist && Math.abs(body.getPosition().y - playerY) < talkDist)) {
 			if(bubble.getProgress() == 0 && sound != null){
+				stopSound();
 				playSound();
 			}
 			bubble.render(batch, r, body.getPosition().x - size.x/2, body.getPosition().y + size.y/2);
@@ -113,6 +114,13 @@ public abstract class Entity {
 			answer = false;
 		}
 	}
+
+	private void stopSound(){
+		if(sound != null) {
+			sound.stop();
+		}
+	}
+
 
 	public Vector2 getLoc() {
 		return loc;
@@ -161,5 +169,6 @@ public abstract class Entity {
 	public boolean answerYes() {
 		return answer;
 	}
+
 
 }
