@@ -35,7 +35,7 @@ public class Cow extends Entity{
 
     @Override
     public void render(ShapeRenderer r, SpriteBatch batch){
-        batch.draw(tex, loc.x, loc.y, size.x, size.y, 0, 0, 32, 16, flipX, false);
+        batch.draw(tex, body.getPosition().x - size.x/2, body.getPosition().y - size.y/2, size.x, size.y, 0, 0, 32, 16, flipX, false);
     }
 
 }

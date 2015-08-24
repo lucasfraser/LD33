@@ -49,7 +49,7 @@ public class Logic {
         hedgehog = new Hedgehog(13, 0, world, lighting);
         rabbit = new Rabbit(14, 0, world, lighting);
         alpaca = new Alpaca(15, 0, world, lighting);
-        cow = new Cow(16, 0, world, lighting);
+        cow = new Cow(16, 1, world, lighting);
         duck = new Duck(17, 0, world, lighting);
         fox = new Fox(18, 0, world, lighting);
         frog = new Frog(19, 0, world, lighting);
@@ -75,7 +75,7 @@ public class Logic {
         pig.setSpeechActive(true);
         snake.setSpeechBubble(new SpeechBubble("Oh, I'm freezing out here!", 2));
         snake.setSpeechActive(true);
-        turtle.setSpeechBubble(new SpeechBubble("Blimey! Some red whiskery fellow flipped my upside down and left me to rot! Gimme a hand would you?", 2));
+        turtle.setSpeechBubble(new SpeechBubble("Blimey! Some red whiskery fellow flipped me upside down and left me to rot! Gimme a hand would you?", 2));
         turtle.setSpeechActive(true);
 
         Renderer.entities.add(balloon);
@@ -128,29 +128,29 @@ public class Logic {
         }
         if(haveCarrot && rabbit.answerYes()){
             setHaveCarrot(false);
-            rabbit.setSpeechBubble(new SpeechBubble("You marvellous chap! Many thanks", 2));
+            rabbit.setSpeechBubble(new SpeechBubble("Mmm, crunchy! Many thanks!", 2));
         }
         if(haveBalloon && hedgehog.answerYes()){
             setHaveBalloon(false);
-            hedgehog.setSpeechBubble(new SpeechBubble("You marvellous chap! Many thanks", 2));
+            hedgehog.setSpeechBubble(new SpeechBubble("Thanks mister!", 2));
         }
         if(haveLolly && frog.answerYes()){
             setHaveLolly(false);
-            frog.setSpeechBubble(new SpeechBubble("You marvellous chap! Many thanks", 2));
+            frog.setSpeechBubble(new SpeechBubble("You marvellous chap! You've saved this old frog's croak!", 2));
             setHaveBottle(true);
         }
         if(haveDuckling && duck.answerYes()){
             setHaveDuckling(false);
-            duck.setSpeechBubble(new SpeechBubble("You marvellous chap! Many thanks", 2));
+            duck.setSpeechBubble(new SpeechBubble("Oh, you saved my baby! You're my hero!", 2));
         }
         if(haveBottle && snake.answerYes()){
             setHaveBottle(false);
-            snake.setSpeechBubble(new SpeechBubble("You marvellous chap! Many thanks", 2));
+            snake.setSpeechBubble(new SpeechBubble("Mmm, yesssss, just like sssummer...", 2));
             setHaveScarf(true);
         }
         if(turtle.isOnBack() && turtle.answerYes()){
             turtle.flipUp();
-            turtle.setSpeechBubble(new SpeechBubble("You marvellous chap! Many thanks", 2));
+            turtle.setSpeechBubble(new SpeechBubble("The world needs more people like you, kind sir ghost!", 2));
             setHaveHat(true);
         }
         if(!fox.isHungry() && fox.answerYes()){
@@ -165,21 +165,21 @@ public class Logic {
         }
         else if(fox.isHungry() && haveScones && fox.answerYes()){
             setHaveScones(false);
-            fox.setSpeechBubble(new SpeechBubble("You marvellous chap! Many thanks", 2));
+            fox.setSpeechBubble(new SpeechBubble("These are delicious! Much better than duckling!", 2));
         }
         if(haveManure && cow.answerYes()){
             setHaveManure(false);
-            cow.setSpeechBubble(new SpeechBubble("You marvellous chap! Many thanks", 2));
+            cow.setSpeechBubble(new SpeechBubble("I think I can see new shoots already!", 2));
             setHaveMilk(true);
         }
         if(haveMilk && pig.answerYes()){
             setHaveMilk(false);
-            pig.setSpeechBubble(new SpeechBubble("You marvellous chap! Many thanks", 2));
+            pig.setSpeechBubble(new SpeechBubble("Ahh, the smell of freshly baked scones...", 2));
             setHaveScones(true);
         }
         if(haveScarf && alpaca.answerYes()){
             setHaveScarf(false);
-            alpaca.setSpeechBubble(new SpeechBubble("You marvellous chap! Many thanks", 2));
+            alpaca.setSpeechBubble(new SpeechBubble("Don't eat that. Strictly plants only. Hehe...", 2));
             setHaveManure(true);
         }
     }
@@ -257,7 +257,7 @@ public class Logic {
 
     public void setHaveManure(boolean haveManure) {
         if(haveManure) {
-            cow.setSpeechBubble(new SpeechBubble("'SNIFF' Is that alpaca dung I smell? And... 'SNIFF' Nice and fresh! Could I have some for my garden? \n [y]", 2));
+            cow.setSpeechBubble(new SpeechBubble("'SNIFF' Is that alpaca dung I smell? And... 'SNIFF' Nice and fresh! Could I have some for my garden? I'll squeeze you some fresh milk in return.\n [y]", 2));
         }
         this.haveManure = haveManure;
     }
@@ -268,7 +268,7 @@ public class Logic {
 
     public void setHaveMilk(boolean haveMilk) {
         if(haveMilk) {
-            pig.setSpeechBubble(new SpeechBubble("Is that milk? Just what I need for my scones! May I have a cup or two? \n [y]", 2));
+            pig.setSpeechBubble(new SpeechBubble("Is that milk? Just what I need for my scones! May I have a cup or two? You can have some once they're baked.\n [y]", 2));
         }
         this.haveMilk = haveMilk;
     }
@@ -279,7 +279,7 @@ public class Logic {
 
     public void setHaveScarf(boolean haveScarf) {
         if(haveScarf) {
-            alpaca.setSpeechBubble(new SpeechBubble("That scarf look jolly comfortable! Could I borrow it for the night? \n [y]", 2));
+            alpaca.setSpeechBubble(new SpeechBubble("That scarf look jolly comfortable! Could I borrow it for the night? I'll give you some quality fertiliser as a thank you.\n [y]", 2));
         }
         this.haveScarf = haveScarf;
     }
