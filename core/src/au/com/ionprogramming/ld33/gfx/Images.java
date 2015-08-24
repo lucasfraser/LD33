@@ -32,7 +32,19 @@ public class Images {
     public static Texture frogSmall;
     public static Texture duckBig;
     public static Texture duckSmall;
-    
+    public static Texture[] fire;
+    public static Texture fox;
+    public static Texture hwb;
+    public static Texture milk;
+    public static Texture poo;
+    public static Texture scarf;
+    public static Texture snake;
+    public static Texture turtleHat;
+    public static Texture turtleNoHat;
+
+
+
+
     public static void loadImages(){
 
         IPL = new Texture("IonProgrammingLogo640.png");
@@ -72,6 +84,11 @@ public class Images {
                 new Texture("grass/13_root2.png"),
                 new Texture("grass/14_rootRight.png")};
 
+        fire = new Texture[]{
+                new Texture("images/fire1.png"),
+                new Texture("images/fire2.png"),
+                new Texture("images/fire3.png")};
+
         stars = new Texture("backgroundStars.png");
         stars.setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat);
 
@@ -87,6 +104,14 @@ public class Images {
         frogSmall = new Texture("images/frogSmall.png");
         duckBig = new Texture("images/duckBig.png");
         duckSmall = new Texture("images/duckSmall.png");
+        fox = new Texture("images/fox.png");
+        hwb = new Texture("images/hwb.png");
+        milk = new Texture("images/milk.png");
+        poo = new Texture("images/poo.png");
+        scarf = new Texture("images/scarf.png");
+        snake = new Texture("images/snake.png");
+        turtleHat = new Texture("images/turtleHat.png");
+        turtleNoHat = new Texture("images/turtleNoHat.png");
 
         monster = new Texture[]{
                 new Texture("monster/0.png"),

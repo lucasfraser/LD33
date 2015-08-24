@@ -14,7 +14,7 @@ public class Menu {
         Gdx.gl.glClearColor(0f, 0f, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        batch.draw(Images.Title, Gdx.graphics.getWidth() / 2 - Images.Title.getWidth() / 2, Gdx.graphics.getHeight() / 2 - Images.Title.getHeight() / 2);
+        batch.draw(Images.Title, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), 0, 0, Images.Title.getWidth(), Images.Title.getHeight(), false, false);
 
         if(Gdx.input.isKeyPressed(Input.Keys.ENTER)){
             LD33Game.TITLE_SCREEN = false;

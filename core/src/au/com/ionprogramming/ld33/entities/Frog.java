@@ -14,7 +14,7 @@ public class Frog extends Entity{
     protected boolean sick;
 
     public Frog(float x, float y, World world, Lighting lighting){
-        super(true, x, y, 1f, 1f, world, lighting, true, Images.rabbitBig, false);
+        super(true, x, y, 1f, 1f, world, lighting, true, Images.frogBig, false);
         rand = new Random();
         sick = true;
     }

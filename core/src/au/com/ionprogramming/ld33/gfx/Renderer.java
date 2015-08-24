@@ -5,12 +5,12 @@ import au.com.ionprogramming.ld33.logic.Logic;
 import au.com.ionprogramming.ld33.logic.Physics;
 import au.com.ionprogramming.ld33.map.Map;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.scenes.scene2d.utils.ScissorStack;
 
 import java.util.ArrayList;
 
@@ -39,6 +39,9 @@ public class Renderer {
     private ShapeRenderer shapeRenderer;
 
     private Logic logic;
+
+    private Rectangle scissors;
+    private Rectangle clipBounds;
 
     public Renderer(Physics physics, Lighting lighting){
 
@@ -84,9 +87,14 @@ public class Renderer {
 
         entities.addAll(logic.getEntities());
 
+        scissors = new Rectangle();
+
+
     }
 
     public void render(){
+
+        System.out.println(Gdx.graphics.getFramesPerSecond());
 
         setCamPos(logic.getPlayer());
         cam.update();
@@ -103,6 +111,11 @@ public class Renderer {
 
         batch.begin();
 
+            clipBounds = new Rectangle(cam.position.x - cam.viewportWidth/2, cam.position.y - cam.viewportHeight/2, cam.viewportWidth, cam.viewportHeight);
+
+            ScissorStack.calculateScissors(cam, batch.getTransformMatrix(), clipBounds, scissors);
+            ScissorStack.pushScissors(scissors);
+
             for(int i = 0; i < bgEntities.size(); i++){
                 bgEntities.get(i).update();
                 bgEntities.get(i).render(shapeRenderer, batch);
@@ -113,6 +126,7 @@ public class Renderer {
                 entities.get(i).render(shapeRenderer, batch);
             }
 
+        ScissorStack.popScissors();
 
         batch.end();
 
