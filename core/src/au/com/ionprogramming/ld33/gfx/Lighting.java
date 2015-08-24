@@ -1,6 +1,5 @@
 package au.com.ionprogramming.ld33.gfx;
 
-
 import au.com.ionprogramming.ld33.logic.Physics;
 import box2dLight.DirectionalLight;
 import box2dLight.PointLight;
