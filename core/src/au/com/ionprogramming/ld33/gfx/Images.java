@@ -42,6 +42,7 @@ public class Images {
     public static Texture turtleHat;
     public static Texture turtleNoHat;
 
+    public static Texture play;
 
 
 
@@ -119,5 +120,7 @@ public class Images {
                 new Texture("monster/2.png"),
                 new Texture("monster/3.png")
         };
+
+        play = new Texture("play.png");
     }
 }

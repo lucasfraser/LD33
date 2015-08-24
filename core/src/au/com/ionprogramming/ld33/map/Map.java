@@ -47,6 +47,11 @@ public class Map {
                     bgEntities.add(new Tree(x-1, y, physics.getWorld(), lighting, block-33));
                 }
 
+                //FIRE
+                if(block == 39) {
+                    bgEntities.add(new Campfire(x, y, physics.getWorld(), lighting));
+                }
+
             }
         }
     }

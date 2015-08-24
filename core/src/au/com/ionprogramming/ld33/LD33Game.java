@@ -61,6 +61,9 @@ public class LD33Game extends ApplicationAdapter {
 
 	@Override
 	public void resize(int width, int height){
+
+		batch.getProjectionMatrix().setToOrtho2D(0, 0, width, height);
+
 		if(width < 640){
 			Gdx.graphics.setDisplayMode(640, Gdx.graphics.getHeight(), false);
 		}
