@@ -49,6 +49,8 @@ public class Images {
     public static Texture pig;
 
     public static Texture play;
+    public static Texture black;
+
 
 
 
@@ -120,9 +122,14 @@ public class Images {
         turtleHat = new Texture("images/turtleHat.png");
         turtleNoHat = new Texture("images/turtleNoHat.png");
 
-        alpaca = new Texture("images/alpacaScarf.png");
+
+        alpaca = new Texture("images/alpacca.png");
+        alpacaScarf = new Texture("images/alpacaScarf.png");
         pig = new Texture("images/pig.png");
         cow = new Texture("images/cow.png");
+
+
+        black = new Texture("black.png");
 
 
         monster = new Texture[]{
