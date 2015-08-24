@@ -42,21 +42,21 @@ public class Logic {
     private boolean haveHat = false;
 
     public Logic(World world, Lighting lighting){
-        balloon = new Balloon(10, 0, world, lighting);
-        carrot = new Carrot(11, 0, world, lighting);
-        lolly = new Lolly(12, 0, world, lighting);
+        balloon = new Balloon(19, 16, world, lighting);
+        carrot = new Carrot(2, 11, world, lighting);
+        lolly = new Lolly(8, 2, world, lighting);
 
-        player = new Player(0, 0, world, lighting);
-        hedgehog = new Hedgehog(13, 0, world, lighting);
-        rabbit = new Rabbit(14, 0, world, lighting);
-        alpaca = new Alpaca(15, 0, world, lighting);
-        cow = new Cow(16, 1, world, lighting);
-        duck = new Duck(17, 0, world, lighting);
-        fox = new Fox(18, 0, world, lighting);
-        frog = new Frog(19, 0, world, lighting);
-        pig = new Pig(20, 0, world, lighting);
-        snake = new Snake(21, 0, world, lighting);
-        turtle = new Turtle(22, 0, world, lighting);
+        player = new Player(3, 2, world, lighting);
+        hedgehog = new Hedgehog(34, 18, world, lighting);
+        rabbit = new Rabbit(44, 7, world, lighting);
+        alpaca = new Alpaca(52, 13, world, lighting);
+        cow = new Cow(65, 12, world, lighting);
+        duck = new Duck(82, 9, world, lighting);
+        fox = new Fox(71, 1, world, lighting);
+        frog = new Frog(88, 6, world, lighting);
+        pig = new Pig(94, 9, world, lighting);
+        snake = new Snake(29, 7, world, lighting);
+        turtle = new Turtle(23, 1, world, lighting);
 
         hedgehog.setSpeechBubble(new SpeechBubble("I popped my balloon and now I'm sad...", 2));
         hedgehog.setSpeechActive(true);

@@ -52,6 +52,11 @@ public class Map {
                     bgEntities.add(new Campfire(x, y, physics.getWorld(), lighting));
                 }
 
+                //FIREFLIES
+                if(block == 41){
+                    entities.add(new Firefly(x, y, physics.getWorld(), lighting));
+                }
+
             }
         }
     }
