@@ -2,6 +2,8 @@ package au.com.ionprogramming.ld33.entities;
 
 import au.com.ionprogramming.ld33.gfx.Lighting;
 import au.com.ionprogramming.ld33.gfx.SpeechBubble;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
@@ -16,10 +18,12 @@ public abstract class Entity {
     protected Body body;
 	protected Texture tex;
 	protected SpeechBubble bubble;
-	protected boolean flip = false;
+	protected boolean flipX = false;
+	protected boolean flipY = false;
 
 	protected boolean speechActive;
 	protected float talkDist = 2;
+	protected boolean answer = false;
 
     public Entity(boolean moving, float x, float y, float width, float height, World world, Lighting lighting, boolean lockRotation, Texture texture, boolean rounded){
 
@@ -80,15 +84,19 @@ public abstract class Entity {
 	}
 
 	public void render(ShapeRenderer r, SpriteBatch batch){
-		batch.draw(tex, body.getPosition().x - size.x / 2, body.getPosition().y - size.y / 2, size.x, size.y, 0, 0, 16, 16, flip, false);
+		batch.draw(tex, body.getPosition().x - size.x / 2, body.getPosition().y - size.y / 2, size.x, size.y, 0, 0, 16, 16, flipX, flipY);
 	}
 
 	public void renderSpeechBubble(ShapeRenderer r, SpriteBatch batch, float playerX, float playerY){
 		if(bubble != null && speechActive && (Math.abs(body.getPosition().x - playerX) < talkDist && Math.abs(body.getPosition().y - playerY) < talkDist)) {
 			bubble.render(batch, r, body.getPosition().x - size.x/2, body.getPosition().y + size.y/2);
+			if(Gdx.input.isKeyPressed(Input.Keys.Y)){
+				answer = true;
+			}
 		}
 		else if(bubble != null){
 			bubble.resetProgress();
+			answer = false;
 		}
 	}
 
@@ -135,4 +143,9 @@ public abstract class Entity {
 	public void setSpeechActive(boolean speechActive) {
 		this.speechActive = speechActive;
 	}
+
+	public boolean answerYes() {
+		return answer;
+	}
+
 }

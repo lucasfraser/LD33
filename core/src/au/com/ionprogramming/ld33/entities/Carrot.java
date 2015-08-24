@@ -16,5 +16,4 @@ public class Carrot extends Entity{
     public Carrot(float x, float y, World world, Lighting lighting){
         super(true, x, y, 1f, 1f, world, lighting, true, Images.carrot, false);
     }
-
 }

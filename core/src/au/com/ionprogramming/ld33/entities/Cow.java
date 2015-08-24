@@ -25,17 +25,17 @@ public class Cow extends Entity{
         int i = rand.nextInt(800);
         if(i == 0){
             body.applyLinearImpulse(-1f, 0, body.getPosition().x, body.getPosition().y, true);
-            flip = false;
+            flipX = false;
         }
         else if(i == 1){
             body.applyLinearImpulse(1f, 0, body.getPosition().x, body.getPosition().y, true);
-            flip = true;
+            flipX = true;
         }
     }
 
     @Override
     public void render(ShapeRenderer r, SpriteBatch batch){
-        batch.draw(tex, loc.x, loc.y, size.x, size.y, 0, 0, 32, 16, flip, false);
+        batch.draw(tex, loc.x, loc.y, size.x, size.y, 0, 0, 32, 16, flipX, false);
     }
 
 }

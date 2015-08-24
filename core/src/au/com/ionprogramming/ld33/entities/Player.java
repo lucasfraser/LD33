@@ -2,13 +2,11 @@ package au.com.ionprogramming.ld33.entities;
 
 import au.com.ionprogramming.ld33.gfx.Images;
 import au.com.ionprogramming.ld33.gfx.Lighting;
-import au.com.ionprogramming.ld33.gfx.Renderer;
 import box2dLight.PointLight;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.physics.box2d.World;
@@ -32,11 +30,11 @@ public class Player extends Entity{
     @Override
     public void update(){
         if(Gdx.input.isKeyPressed(Input.Keys.A)){
-            flip = true;
+            flipX = true;
             body.applyLinearImpulse(-0.1f, 0, body.getPosition().x, body.getPosition().y, true);
         }
         if(Gdx.input.isKeyPressed(Input.Keys.D)){
-            flip = false;
+            flipX = false;
             body.applyLinearImpulse(0.1f, 0, body.getPosition().x, body.getPosition().y, true);
         }
         if(Gdx.input.isKeyJustPressed(Input.Keys.SPACE)){
@@ -59,7 +57,7 @@ public class Player extends Entity{
                 sprite = 0;
             }
         }
-        batch.draw(Images.monster[sprite], body.getPosition().x - size.x / 2, body.getPosition().y - size.y / 2, size.x, size.y, 0, 0, Images.monster[sprite].getWidth(), Images.monster[sprite].getHeight(), flip, false);
+        batch.draw(Images.monster[sprite], body.getPosition().x - size.x / 2, body.getPosition().y - size.y / 2, size.x, size.y, 0, 0, Images.monster[sprite].getWidth(), Images.monster[sprite].getHeight(), flipX, false);
     }
 
 }

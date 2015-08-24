@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.utils.ScissorStack;
 
 import java.util.ArrayList;
@@ -18,10 +19,6 @@ import java.util.ArrayList;
  * Created by Lucas on 3/08/2015.
  */
 public class Renderer {
-
-
-    public static float px = 0;
-    public static float py = 0;
 
     public static ArrayList<Entity> entities = new ArrayList<Entity>();
     public static ArrayList<BGEntity> bgEntities = new ArrayList<BGEntity>();
@@ -86,14 +83,10 @@ public class Renderer {
         entities.add(new Firefly(6, 5f, physics.getWorld(), lighting));
         entities.add(new Firefly(8, 5f, physics.getWorld(), lighting));
 
-        entities.addAll(logic.getEntities());
-
         scissors = new Rectangle();
-
-
     }
 
-    public void render(){
+    public void render(World world){
 
         System.out.println(Gdx.graphics.getFramesPerSecond());
 
@@ -107,7 +100,11 @@ public class Renderer {
         batch.setProjectionMatrix(cam.combined);
 
         bg.begin();
-        bg.draw(Images.stars, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), px*0.01f - (float)Gdx.graphics.getWidth()/800f, py*0.01f - (float)Gdx.graphics.getHeight()/800f, px*0.01f + (float)Gdx.graphics.getWidth()/800f, py*0.01f + (float)Gdx.graphics.getHeight()/800f);
+        bg.draw(Images.stars, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight(),
+                -(logic.getPlayer().getBody().getPosition().x - logic.getPlayer().getSize().x / 2) * 0.01f - (float) Gdx.graphics.getWidth() / 800f,
+                -(logic.getPlayer().getBody().getPosition().y - logic.getPlayer().getSize().y) * 0.01f - (float) Gdx.graphics.getHeight() / 800f,
+                -(logic.getPlayer().getBody().getPosition().x - logic.getPlayer().getSize().x) * 0.01f + (float) Gdx.graphics.getWidth() / 800f,
+                -(logic.getPlayer().getBody().getPosition().y - logic.getPlayer().getSize().y) * 0.01f + (float) Gdx.graphics.getHeight() / 800f);
         bg.end();
 
         batch.begin();
@@ -134,7 +131,7 @@ public class Renderer {
         for(int i = 0; i < entities.size(); i++){
             entities.get(i).renderSpeechBubble(shapeRenderer, batch, logic.getPlayer().getBody().getPosition().x, logic.getPlayer().getBody().getPosition().y);
         }
-
+        logic.update(world);
 
     }
 

@@ -12,32 +12,30 @@ import java.util.Random;
 public class Turtle extends Entity{
     protected Random rand;
 
-    public boolean isOnBack() {
-        return onBack;
-    }
-
-    public void setOnBack(boolean onBack) {
-        this.onBack = onBack;
-    }
-
-    private boolean onBack;
-
     public Turtle(float x, float y, World world, Lighting lighting){
         super(true, x, y, 1f, 1f, world, lighting, true, Images.turtleHat, false);
         rand = new Random();
-        onBack = true;
+        flipY = true;
+    }
+
+    public void flipUp(){
+        flipY = false;
+    }
+
+    public boolean isOnBack(){
+        return flipY;
     }
 
     @Override
     public void update(){
-        if(!onBack) {
+        if(!flipY) {
             int i = rand.nextInt(1000);
             if (i == 0) {
                 body.applyLinearImpulse(-1f, 0, body.getPosition().x, body.getPosition().y, true);
-                flip = false;
+                flipX = false;
             } else if (i == 1) {
                 body.applyLinearImpulse(1f, 0, body.getPosition().x, body.getPosition().y, true);
-                flip = true;
+                flipX = true;
             }
         }
     }

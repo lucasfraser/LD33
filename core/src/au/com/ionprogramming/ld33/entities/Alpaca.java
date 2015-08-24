@@ -11,10 +11,10 @@ import java.util.Random;
 /**
  * Created by Sam on 24/08/2015.
  */
-public class Alpacca extends Entity{
+public class Alpaca extends Entity{
     protected Random rand;
 
-    public Alpacca(float x, float y, World world, Lighting lighting){
+    public Alpaca(float x, float y, World world, Lighting lighting){
         super(true, x, y, 1f, 2f, world, lighting, true, Images.alpaca, false);
         rand = new Random();
 
@@ -25,17 +25,17 @@ public class Alpacca extends Entity{
         int i = rand.nextInt(400);
         if(i == 0){
             body.applyLinearImpulse(-1f, 0, body.getPosition().x, body.getPosition().y, true);
-            flip = false;
+            flipX = false;
         }
         else if(i == 1){
             body.applyLinearImpulse(1f, 0, body.getPosition().x, body.getPosition().y, true);
-            flip = true;
+            flipX = true;
         }
     }
 
     @Override
     public void render(ShapeRenderer r, SpriteBatch batch){
-        batch.draw(tex, body.getPosition().x - size.x / 2, body.getPosition().y - size.y / 2, size.x, size.y, 0, 0, 16, 32, flip, false);
+        batch.draw(tex, body.getPosition().x - size.x / 2, body.getPosition().y - size.y / 2, size.x, size.y, 0, 0, 16, 32, flipX, false);
     }
 
 }

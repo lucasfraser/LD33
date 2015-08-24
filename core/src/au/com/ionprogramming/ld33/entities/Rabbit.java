@@ -23,11 +23,11 @@ public class Rabbit extends Entity{
         int i = rand.nextInt(400);
         if(i == 0){
             body.applyLinearImpulse(-1f, 0, body.getPosition().x, body.getPosition().y, true);
-            flip = false;
+            flipX = false;
         }
         else if(i == 1){
             body.applyLinearImpulse(1f, 0, body.getPosition().x, body.getPosition().y, true);
-            flip = true;
+            flipX = true;
         }
         else if(i == 2){
             body.applyLinearImpulse(0, -1f, body.getPosition().x, body.getPosition().y, true);
